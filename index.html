@@ -1,48 +1,37 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #ffe6f2;
-    padding: 20px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="question">Will You Be My Valentine? 💖</h1>
+        <div class="buttons" id="choice-buttons">
+            <button id="yesButton" class="btn">Yes 🥰</button>
+            <button id="noButton" class="btn">No 💔</button>
+        </div>
+        <p id="response" class="hidden"></p>
+    </div>
 
-.container, .flower-selection, #finalMessage {
-    margin-top: 50px;
-}
+    <div class="flower-selection hidden" id="flower-section">
+        <h2>Pick a flower you like 🌸</h2>
+        <div class="flowers">
+            <img src="flower1.jpg" class="flower" data-flower="Rose">
+            <img src="flower2.jpg" class="flower" data-flower="Tulip">
+            <img src="flower3.jpg" class="flower" data-flower="Lily">
+            <img src="flower4.jpg" class="flower" data-flower="Orchid">
+            <img src="flower5.jpg" class="flower" data-flower="Sunflower">
+        </div>
+        <button id="submitFlowers" class="hidden">Enter</button>
+    </div>
 
-.hidden {
-    display: none;
-}
-
-.btn {
-    font-size: 20px;
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-#yesButton {
-    background-color: #ff4da6;
-    color: white;
-}
-
-#noButton {
-    background-color: #333;
-    color: white;
-}
-
-#noButton:hover {
-    transform: translateX(calc(10px - 5px * (Math.random() * 2)));
-}
-
-.flowers img {
-    width: 100px;
-    margin: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.flowers img:hover {
-    transform: scale(1.1);
-}
+    <div id="finalMessage" class="hidden">
+        <h2>Can't wait to see you soon! 💕</h2>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
