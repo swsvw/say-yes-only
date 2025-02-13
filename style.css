@@ -33,14 +33,20 @@ h1 {
 }
 
 .flower-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-top: 20px;
 }
 
 .flower {
-    width: 150px;
-    margin: 10px;
-    cursor: pointer;
+    width: 180px;
+    height: 180px;
+    object-fit: cover; /* Ensures proportional sizing */
     border-radius: 10px;
+    cursor: pointer;
     transition: transform 0.2s;
 }
 
@@ -54,4 +60,3 @@ h1 {
     color: #ff1493;
     margin-top: 20px;
 }
-
