@@ -4,23 +4,22 @@ document.getElementById("yesButton").addEventListener("click", function() {
 
 document.getElementById("noButton").addEventListener("mouseover", function() {
     let button = document.getElementById("noButton");
-    
+
     // Get the container dimensions
     let container = document.querySelector(".container");
     let containerRect = container.getBoundingClientRect();
-    
-    // Set movement range (stays near the box)
-    let minX = containerRect.left - 50; // Left bound
-    let maxX = containerRect.right - 50; // Right bound
-    let minY = containerRect.top + 50; // Stay close to bottom of box
-    let maxY = containerRect.bottom + 80; // A bit lower
+
+    // Define a limited movement range (stays near the box)
+    let minX = containerRect.left + 20;  // Closer left
+    let maxX = containerRect.right - 120; // Closer right
+    let minY = containerRect.top + 40;  // Slightly below box
+    let maxY = containerRect.bottom - 20; // Not too low
 
     let randomX = Math.random() * (maxX - minX) + minX;
     let randomY = Math.random() * (maxY - minY) + minY;
 
-    // Apply smooth transition for movement
-    button.style.transition = "transform 0.6s ease-in-out, left 0.6s ease-in-out, top 0.6s ease-in-out";
+    // Reduce lag: Move only using 'transform' (smoother performance)
+    button.style.transition = "transform 0.4s ease-in-out";
     button.style.position = "absolute";
-    button.style.left = `${randomX}px`;
-    button.style.top = `${randomY}px`;
+    button.style.transform = `translate(${randomX}px, ${randomY}px)`;
 });
