@@ -1,67 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;600&display=swap');
+document.addEventListener("DOMContentLoaded", () => {
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
+    const responseText = document.getElementById("response");
+    const flowerSection = document.getElementById("flower-section");
+    const finalMessage = document.getElementById("finalMessage");
+    const submitButton = document.getElementById("submitFlowers");
+    let flowerChoices = [];
 
-body {
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    text-align: center;
-}
+    yesButton.addEventListener("click", () => {
+        responseText.innerText = "hahaha yay 😙🥰😍😳";
+        responseText.classList.remove("hidden");
+        setTimeout(() => {
+            document.getElementById("choice-buttons").classList.add("hidden");
+            flowerSection.classList.remove("hidden");
+        }, 1000);
+    });
 
-.container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    transition: transform 0.3s ease-in-out;
-}
+    noButton.addEventListener("mouseover", () => {
+        const newX = Math.random() * window.innerWidth * 0.4 + "px";
+        const newY = Math.random() * window.innerHeight * 0.4 + "px";
+        noButton.style.transform = `translate(${newX}, ${newY})`;
+    });
 
-.container:hover {
-    transform: scale(1.05);
-}
+    document.querySelectorAll(".flower").forEach(flower => {
+        flower.addEventListener("click", (event) => {
+            flowerChoices.push(event.target.dataset.flower);
+            submitButton.classList.remove("hidden");
+        });
+    });
 
-h1 {
-    color: #d63384;
-    font-size: 26px;
-    margin-bottom: 20px;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.btn {
-    border: none;
-    padding: 12px 24px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: 0.3s ease-in-out;
-}
-
-#yesButton {
-    background-color: #ff4d6d;
-    color: white;
-}
-
-#yesButton:hover {
-    background-color: #e63e5a;
-    transform: scale(1.1);
-}
-
-#noButton {
-    background-color: #666;
-    color: white;
-}
-
-#noButton:hover {
-    background-color: #444;
-    transform: scale(1.1);
-}
+    submitButton.addEventListener("click", () => {
+        console.log("Selected flowers:", flowerChoices);
+        flowerSection.classList.add("hidden");
+        finalMessage.classList.remove("hidden");
+    });
+});
