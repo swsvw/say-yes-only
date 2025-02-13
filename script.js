@@ -1,48 +1,46 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #ffe6f2;
-    padding: 20px;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
+    const responseText = document.getElementById("response");
+    const flowerSection = document.getElementById("flower-section");
+    const finalMessage = document.getElementById("finalMessage");
+    const submitButton = document.getElementById("submitFlowers");
+    let flowerChoices = [];
 
-.container, .flower-selection, #finalMessage {
-    margin-top: 50px;
-}
+    // "Yes" button click
+    yesButton.addEventListener("click", () => {
+        responseText.innerText = "hahaha yay 😙🥰😍😳";
+        responseText.classList.remove("hidden");
+        setTimeout(() => {
+            document.getElementById("choice-buttons").classList.add("hidden");
+            flowerSection.classList.remove("hidden");
+        }, 1000);
+    });
 
-.hidden {
-    display: none;
-}
+    // "No" button moves away when hovered
+    noButton.addEventListener("mouseover", () => {
+        const maxX = window.innerWidth * 0.4; 
+        const maxY = window.innerHeight * 0.4; 
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        
+        noButton.style.position = "absolute";
+        noButton.style.left = `${newX}px`;
+        noButton.style.top = `${newY}px`;
+    });
 
-.btn {
-    font-size: 20px;
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
+    // Flower selection logic
+    document.querySelectorAll(".flower").forEach(flower => {
+        flower.addEventListener("click", (event) => {
+            flowerChoices.push(event.target.dataset.flower);
+            submitButton.classList.remove("hidden");
+        });
+    });
 
-#yesButton {
-    background-color: #ff4da6;
-    color: white;
-}
-
-#noButton {
-    background-color: #333;
-    color: white;
-}
-
-#noButton:hover {
-    transform: translateX(calc(10px - 5px * (Math.random() * 2)));
-}
-
-.flowers img {
-    width: 100px;
-    margin: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.flowers img:hover {
-    transform: scale(1.1);
-}
+    // Submitting flower selection
+    submitButton.addEventListener("click", () => {
+        console.log("Selected flowers:", flowerChoices);
+        flowerSection.classList.add("hidden");
+        finalMessage.classList.remove("hidden");
+    });
+});
