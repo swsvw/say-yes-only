@@ -1,9 +1,12 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
     transition: background 0.5s ease-in-out;
 }
 
+/* Start Screen */
 #start-screen {
     background: red;
     color: white;
@@ -21,6 +24,7 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    position: relative;
 }
 
 #yes-btn {
@@ -31,14 +35,16 @@ body {
 #no-btn {
     background: white;
     color: red;
-    position: absolute;
 }
 
+/* Hide the flower page initially */
 #flower-page {
-    background: white;
+    display: none;
     padding: 20px;
+    background: white;
 }
 
+/* Flowers Styling */
 .flower-container {
     display: flex;
     justify-content: center;
@@ -47,7 +53,7 @@ body {
 }
 
 .flower-container img {
-    width: 250px;
+    width: 200px; /* Proportionate size */
     height: auto;
     object-fit: contain;
     border-radius: 10px;
