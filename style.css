@@ -1,37 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const yesButton = document.getElementById("yesButton");
-    const noButton = document.getElementById("noButton");
-    const responseText = document.getElementById("response");
-    const flowerSection = document.getElementById("flower-section");
-    const finalMessage = document.getElementById("finalMessage");
-    const submitButton = document.getElementById("submitFlowers");
-    let flowerChoices = [];
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background-color: #fff0f6;
+}
 
-    yesButton.addEventListener("click", () => {
-        responseText.innerText = "hahaha yay 😙🥰😍😳";
-        responseText.classList.remove("hidden");
-        setTimeout(() => {
-            document.getElementById("choice-buttons").classList.add("hidden");
-            flowerSection.classList.remove("hidden");
-        }, 1000);
-    });
+h1 {
+    font-size: 2rem;
+}
 
-    noButton.addEventListener("mouseover", () => {
-        const newX = Math.random() * window.innerWidth * 0.4 + "px";
-        const newY = Math.random() * window.innerHeight * 0.4 + "px";
-        noButton.style.transform = `translate(${newX}, ${newY})`;
-    });
+.buttons button {
+    font-size: 1.2rem;
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-    document.querySelectorAll(".flower").forEach(flower => {
-        flower.addEventListener("click", (event) => {
-            flowerChoices.push(event.target.dataset.flower);
-            submitButton.classList.remove("hidden");
-        });
-    });
+#yes-btn {
+    background-color: #ff69b4;
+    color: white;
+}
 
-    submitButton.addEventListener("click", () => {
-        console.log("Selected flowers:", flowerChoices);
-        flowerSection.classList.add("hidden");
-        finalMessage.classList.remove("hidden");
-    });
-});
+#no-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.flower-options {
+    margin-top: 20px;
+}
+
+.flower {
+    width: 150px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.flower:hover {
+    transform: scale(1.1);
+}
+
+#final-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff1493;
+    margin-top: 20px;
+}
+
