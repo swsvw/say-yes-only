@@ -8,14 +8,15 @@ document.addEventListener("DOMContentLoaded", function() {
     noBtn.addEventListener("mouseover", function() {
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.position = "absolute";
         noBtn.style.left = `${x}px`;
         noBtn.style.top = `${y}px`;
     });
 
-    // When "Yes" is clicked, transition to the next page
+    // When "Yes" is clicked, show the next page
     yesBtn.addEventListener("click", function() {
-        startScreen.style.display = "none";
-        flowerPage.style.display = "block";
-        document.body.style.background = "white";
+        startScreen.style.display = "none"; // Hide first screen
+        flowerPage.style.display = "block"; // Show flowers
+        document.body.style.background = "white"; // Change background
     });
 });
