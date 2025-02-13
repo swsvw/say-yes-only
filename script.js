@@ -6,37 +6,58 @@ yesButton.addEventListener("click", function() {
     container.innerHTML = "<h1>Yay! Can't wait! ❤️</h1>";
 });
 
+function moveNoButtonSmoothly(targetX, targetY) {
+    let rect = noButton.getBoundingClientRect();
+    let currentX = rect.left;
+    let currentY = rect.top;
+
+    let deltaX = (targetX - currentX) * 0.2;  // Controls smoothness
+    let deltaY = (targetY - currentY) * 0.2;
+
+    function animate() {
+        currentX += deltaX;
+        currentY += deltaY;
+
+        noButton.style.transform = `translate(${currentX - rect.left}px, ${currentY - rect.top}px)`;
+
+        // Stop moving when close enough to target
+        if (Math.abs(currentX - targetX) > 1 || Math.abs(currentY - targetY) > 1) {
+            requestAnimationFrame(animate);
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
 function moveNoButton() {
     let rect = noButton.getBoundingClientRect();
     let containerRect = container.getBoundingClientRect();
 
-    // Move within a small controlled area near its original position
-    let offsetX = (Math.random() - 0.5) * 120; // Moves left or right by ±60px
-    let offsetY = (Math.random() - 0.5) * 60;  // Moves up or down by ±30px
+    // Small random movement within 80px range
+    let offsetX = (Math.random() - 0.5) * 80;
+    let offsetY = (Math.random() - 0.5) * 50;
 
     let newX = rect.left + offsetX;
     let newY = rect.top + offsetY;
 
-    // Keep the button within the container bounds
+    // Keep within container bounds
     newX = Math.max(containerRect.left + 20, Math.min(containerRect.right - 100, newX));
     newY = Math.max(containerRect.top + 40, Math.min(containerRect.bottom - 60, newY));
 
-    noButton.style.transition = "transform 0.3s ease-in-out";
-    noButton.style.position = "absolute";
-    noButton.style.transform = `translate(${newX - rect.left}px, ${newY - rect.top}px)`;
+    moveNoButtonSmoothly(newX, newY);
 }
 
-// Move when mouse is very close (within 30px)
+// Move only when cursor is VERY close (less than 35px)
 noButton.addEventListener("mousemove", function(event) {
     let rect = noButton.getBoundingClientRect();
     let distance = Math.sqrt((event.clientX - rect.left) ** 2 + (event.clientY - rect.top) ** 2);
 
-    if (distance < 40) {  // Only move if cursor is very close
+    if (distance < 35) { 
         moveNoButton();
     }
 });
 
-// Also move when clicked
-noButton.addEventListener("click", function(event) {
+// Move when clicked
+noButton.addEventListener("click", function() {
     moveNoButton();
 });
