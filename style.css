@@ -35,11 +35,16 @@ button {
     border-radius: 10px;
     cursor: pointer;
     border: none;
+    transition: transform 0.2s ease-in-out;
 }
 
 #yesBtn {
     background-color: rgb(128, 0, 55);
     color: white;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
 }
 
 #noBtn {
@@ -48,15 +53,15 @@ button {
     position: relative;
 }
 
-/* Floating hearts and flowers */
+/* Floating hearts */
 .floating {
     position: absolute;
     font-size: 30px;
-    opacity: 0.7;
-    animation: floatUp 4s linear infinite;
+    opacity: 0.8;
+    animation: floatUp 6s linear infinite;
 }
 
-/* Floating Animation */
+/* Floating animation */
 @keyframes floatUp {
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(-100vh); opacity: 0; }
@@ -69,10 +74,10 @@ button {
     position: absolute;
     background-color: white;
     opacity: 0.7;
-    animation: confettiFall 2s ease-out forwards;
+    animation: confettiFall 3s ease-out forwards;
 }
 
 @keyframes confettiFall {
     0% { transform: translateY(0); }
-    100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
+    100% { transform: translateY(200px) rotate(720deg); opacity: 0; }
 }
