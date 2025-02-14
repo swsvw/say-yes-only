@@ -78,3 +78,53 @@ button {
     50% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(1); opacity: 0; }
 }
+
+#finalMessage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 182, 193, 0.8); /* Translucent pink */
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(255, 105, 180, 0.5);
+}
+
+/* Vibrant Animation */
+.vibrant-effect {
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        background: rgba(255, 105, 180, 0.8);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.05);
+        background: rgba(255, 182, 193, 0.9);
+    }
+}
+
+/* Confetti Celebration */
+.confetti {
+    position: absolute;
+    font-size: 24px;
+    animation: floatConfetti 1s ease-in-out infinite;
+}
+
+@keyframes floatConfetti {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}

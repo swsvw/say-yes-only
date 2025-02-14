@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let noBtn = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
     let heartsContainer = document.querySelector(".hearts-container");
+    let finalMessage = document.getElementById("finalMessage"); // Final message container
 
-    // Create Floating Hearts (2x more)
+    // Create Floating Hearts & Flowers (2x more)
     function createFloatingHeart() {
         for (let i = 0; i < 10; i++) {
             let heart = document.createElement("div");
@@ -18,35 +19,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     setInterval(createFloatingHeart, 500);
 
-    // No Button Moves Away
-    document.addEventListener("DOMContentLoaded", function () {
-        const noButton = document.getElementById("no-btn");
-    
-        noButton.addEventListener("mouseenter", function () {
-            moveButtonAway(noButton);
+    // No Button Moves Away (Stays on Screen)
+    if (noBtn) {
+        noBtn.addEventListener("mouseenter", function (event) {
+            moveButtonAway(event, noBtn);
         });
-    
-        function moveButtonAway(button) {
+
+        function moveButtonAway(event, button) {
             const screenWidth = window.innerWidth;
             const screenHeight = window.innerHeight;
-    
-            let newX = Math.random() * (screenWidth - button.clientWidth);
-            let newY = Math.random() * (screenHeight - button.clientHeight);
-    
-            // Ensure the button doesn't go off-screen
-            newX = Math.min(newX, screenWidth - button.clientWidth - 10);
-            newY = Math.min(newY, screenHeight - button.clientHeight - 10);
-            newX = Math.max(newX, 10);
-            newY = Math.max(newY, 10);
-    
+            const buttonWidth = button.clientWidth;
+            const buttonHeight = button.clientHeight;
+
+            let newX = event.clientX + (Math.random() * 100 - 50); // Move randomly away
+            let newY = event.clientY + (Math.random() * 100 - 50);
+
+            // Keep button inside screen
+            newX = Math.max(10, Math.min(newX, screenWidth - buttonWidth - 10));
+            newY = Math.max(10, Math.min(newY, screenHeight - buttonHeight - 10));
+
             button.style.position = "absolute";
             button.style.left = `${newX}px`;
             button.style.top = `${newY}px`;
         }
-    });
-    
+    }
 
-    // Yes Button Celebration Effect
+    // Yes Button Celebration Effect (4x More Celebration)
     if (yesBtn) {
         yesBtn.addEventListener("click", function () {
             yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
@@ -69,8 +67,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             setTimeout(() => {
-                window.location.href = "flower.html";
+                showFinalMessage();
             }, 2000);
         });
+    }
+
+    // Show Final Message in Translucent Box
+    function showFinalMessage() {
+        finalMessage.style.display = "flex"; // Show the message
+        finalMessage.classList.add("vibrant-effect");
+
+        // Add extra confetti
+        for (let i = 0; i < 60; i++) {
+            let confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.innerText = ["✨", "🎊", "🎈", "💖", "💘"][Math.floor(Math.random() * 5)];
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.top = `${Math.random() * 100}vh`;
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 1500);
+        }
     }
 });
