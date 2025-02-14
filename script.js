@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         heart.classList.add("heart");
         heart.innerHTML = ["❤️", "💖", "🌹", "💗", "💘"][Math.floor(Math.random() * 5)];
         heart.style.left = `${Math.random() * 100}vw`;
-        heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+        heart.style.animationDuration = `${2 + Math.random() * 3}s`;
         heartsContainer.appendChild(heart);
 
         setTimeout(() => heart.remove(), 6000);
