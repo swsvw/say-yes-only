@@ -18,20 +18,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     setInterval(createFloatingHeart, 500);
 
-    // No Button Moves Away But Stays on Screen
-    if (noBtn) {
-        noBtn.addEventListener("mouseover", function () {
-            let maxX = window.innerWidth - noBtn.clientWidth - 20;
-            let maxY = window.innerHeight - noBtn.clientHeight - 20;
-            
-            let newX = Math.random() * maxX;
-            let newY = Math.random() * maxY;
-
-            noBtn.style.position = "absolute";
-            noBtn.style.left = `${Math.max(10, newX)}px`;  // Ensures it stays within screen
-            noBtn.style.top = `${Math.max(10, newY)}px`;
+    // No Button Moves Away
+    document.addEventListener("DOMContentLoaded", function () {
+        const noButton = document.getElementById("no-btn");
+    
+        noButton.addEventListener("mouseenter", function () {
+            moveButtonAway(noButton);
         });
-    }
+    
+        function moveButtonAway(button) {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+    
+            let newX = Math.random() * (screenWidth - button.clientWidth);
+            let newY = Math.random() * (screenHeight - button.clientHeight);
+    
+            // Ensure the button doesn't go off-screen
+            newX = Math.min(newX, screenWidth - button.clientWidth - 10);
+            newY = Math.min(newY, screenHeight - button.clientHeight - 10);
+            newX = Math.max(newX, 10);
+            newY = Math.max(newY, 10);
+    
+            button.style.position = "absolute";
+            button.style.left = `${newX}px`;
+            button.style.top = `${newY}px`;
+        }
+    });
+    
 
     // Yes Button Celebration Effect
     if (yesBtn) {
