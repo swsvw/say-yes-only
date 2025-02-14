@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let yesBtn = document.getElementById("yesBtn");
     let heartsContainer = document.querySelector(".hearts-container");
 
-    // Create Floating Hearts
+    console.log("JavaScript is running!"); // Debugging
+
+    // Create Floating Hearts Animation
     function createFloatingHeart() {
         let heart = document.createElement("div");
         heart.classList.add("heart");
@@ -15,9 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => heart.remove(), 6000);
     }
 
+    // Start creating floating hearts every 500ms
     setInterval(createFloatingHeart, 500);
 
-    // No Button Runs Away
+    // No Button Moves Away
     if (noBtn) {
         noBtn.addEventListener("mouseover", function () {
             let x = Math.random() * (window.innerWidth - 100);
@@ -33,13 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
         yesBtn.addEventListener("click", function () {
             yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
 
-            // Speed Up Hearts
+            console.log("Yes button clicked!"); // Debugging
+
+            // Speed Up Hearts Animation
             document.querySelectorAll(".heart").forEach(heart => {
                 heart.style.animationDuration = "1s";
             });
 
-            // Celebration Animation
-            for (let i = 0; i < 10; i++) {
+            // Celebration Animation (Confetti Effect)
+            for (let i = 0; i < 20; i++) {
                 let celebration = document.createElement("div");
                 celebration.classList.add("celebration");
                 celebration.innerText = "🎉";
@@ -50,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => celebration.remove(), 1000);
             }
 
+            // Redirect to flower.html after a small delay
             setTimeout(() => {
                 window.location.href = "flower.html";
             }, 2000);
