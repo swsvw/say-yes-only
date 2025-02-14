@@ -93,15 +93,15 @@ button {
 }
 .heart {
     position: absolute;
-    font-size: 24px;
-    animation: floatUp 3s linear infinite;
-    opacity: 0.8;
+    font-size: 28px; /* Bigger */
+    animation: floatUp 2.5s linear infinite;
+    opacity: 0.9;
 }
 
 .celebration {
     position: absolute;
-    font-size: 30px;
-    animation: pop 1s ease-out;
+    font-size: 35px; /* Bigger */
+    animation: pop 0.6s ease-out;
 }
 
 @keyframes floatUp {
@@ -110,18 +110,18 @@ button {
         opacity: 1;
     }
     to {
-        transform: translateY(-100px);
+        transform: translateY(-150px); /* More intense float */
         opacity: 0;
     }
 }
 
 @keyframes pop {
     from {
-        transform: scale(0);
-        opacity: 0;
+        transform: scale(0.5);
+        opacity: 0.5;
     }
     to {
-        transform: scale(1);
+        transform: scale(1.5);
         opacity: 1;
     }
 }

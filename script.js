@@ -5,22 +5,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("JavaScript is running!");
 
-    // Create Floating Hearts
+    // Create More Floating Hearts Faster
     function createFloatingHeart() {
         let heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerHTML = ["❤️", "💖", "🌹", "💗", "💘"][Math.floor(Math.random() * 5)];
         heart.style.left = `${Math.random() * 100}vw`;
-        heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+        heart.style.animationDuration = `${2 + Math.random() * 2}s`; // Faster movement
         heartsContainer.appendChild(heart);
 
-        setTimeout(() => heart.remove(), 6000);
+        setTimeout(() => heart.remove(), 4000); // Shorter lifespan for more movement
     }
 
-    // Start Floating Hearts Every 500ms
-    let heartInterval = setInterval(createFloatingHeart, 500);
+    // Increase Heart Frequency
+    let heartInterval = setInterval(createFloatingHeart, 300); // More hearts per second
 
-    // "No" Button Moves Away on Hover
+    // "No" Button Moves Away Faster
     if (noBtn) {
         noBtn.addEventListener("mouseover", function () {
             let x = Math.random() * (window.innerWidth - 100);
@@ -34,32 +34,33 @@ document.addEventListener("DOMContentLoaded", function () {
     // "Yes" Button Click Effect
     if (yesBtn) {
         yesBtn.addEventListener("click", function () {
-            yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+            yesBtn.innerText = "YAYYYY! 🎊💖🥰";
             yesBtn.style.backgroundColor = "#ff4081"; // Cute pink color
 
             console.log("Yes button clicked!");
 
-            // Increase Heart Floating Speed
+            // Faster & More Hearts on Click
             clearInterval(heartInterval);
-            heartInterval = setInterval(createFloatingHeart, 100); // Faster heart spawning
+            heartInterval = setInterval(createFloatingHeart, 100); // Super fast hearts
 
-            // Celebration Animation (Confetti Effect)
-            for (let i = 0; i < 20; i++) {
+            // Celebration Explosion
+            for (let i = 0; i < 40; i++) { // More elements
                 let celebration = document.createElement("div");
                 celebration.classList.add("celebration");
                 celebration.innerText = ["🎉", "✨", "🎆", "💞", "💓"][Math.floor(Math.random() * 5)];
                 celebration.style.left = `${Math.random() * 100}vw`;
                 celebration.style.top = `${Math.random() * 100}vh`;
+                celebration.style.animationDuration = `${0.5 + Math.random()}s`; // Faster pop effect
                 document.body.appendChild(celebration);
 
-                setTimeout(() => celebration.remove(), 1000);
+                setTimeout(() => celebration.remove(), 800);
             }
 
-            // Ensure Redirect Works After 2 Seconds
+            // Redirect to flower.html After 1.5s (Faster)
             setTimeout(() => {
                 console.log("Redirecting to flower.html...");
                 window.location.href = "flower.html";
-            }, 2000);
+            }, 1500);
         });
     }
 });
