@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Special Question</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Will you be my Valentine? ❤️</h1>
-        <button id="yesBtn">Yes</button>
-        <button id="noBtn">No</button>
+        <div class="button-container">
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        document.getElementById("yes-btn").addEventListener("click", function() {
+            window.location.href = "flower.html"; 
+        });
+
+        document.getElementById("no-btn").addEventListener("click", function() {
+            alert("That's okay. You're still amazing! 💖");
+        });
+    </script>
 </body>
 </html>
