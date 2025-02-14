@@ -9,8 +9,6 @@ body {
     align-items: center;
     flex-direction: column;
     margin: 0;
-    overflow: hidden;
-    position: relative;
 }
 
 .container {
@@ -31,7 +29,6 @@ button {
     border-radius: 10px;
     cursor: pointer;
     border: none;
-    transition: 0.3s;
 }
 
 #yesBtn {
@@ -42,45 +39,30 @@ button {
 #noBtn {
     background-color: black;
     color: white;
-    position: absolute;
+    position: relative;
 }
 
-/* Floating hearts */
-.floating {
-    position: absolute;
-    font-size: 30px;
-    opacity: 0.8;
-    animation: float-up 3s linear infinite;
+.flower-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-@keyframes float-up {
-    0% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10vh) translateX(calc(-50px + 100px * random()));
-        opacity: 0;
-    }
+.flower {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Confetti */
-.confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: var(--color);
-    border-radius: 50%;
-    animation: confetti-rise 2s linear forwards;
+.flower:hover {
+    transform: scale(1.1);
 }
 
-@keyframes confetti-rise {
-    0% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10vh) translateX(calc(-50px + 100px * random()));
-        opacity: 0;
-    }
+.selected {
+    border: 3px solid yellow;
 }
