@@ -128,3 +128,6 @@ button {
         opacity: 0;
     }
 }
+#noBtn {
+    transition: left 0.3s ease-out, top 0.3s ease-out;
+}

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let noBtn = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
     let heartsContainer = document.querySelector(".hearts-container");
-    let finalMessage = document.getElementById("finalMessage"); // Final message container
+    let finalMessage = document.getElementById("finalMessage");
 
     // Create Floating Hearts & Flowers (2x more)
     function createFloatingHeart() {
@@ -19,8 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     setInterval(createFloatingHeart, 500);
 
-    // No Button Moves Away (Stays on Screen)
+    // No Button Moves Away (Stays on Screen & Moves Dynamically)
     if (noBtn) {
+        noBtn.style.position = "absolute"; // Ensure position is absolute
+
         noBtn.addEventListener("mouseenter", function (event) {
             moveButtonAway(event, noBtn);
         });
@@ -31,14 +33,21 @@ document.addEventListener("DOMContentLoaded", function () {
             const buttonWidth = button.clientWidth;
             const buttonHeight = button.clientHeight;
 
-            let newX = event.clientX + (Math.random() * 100 - 50); // Move randomly away
-            let newY = event.clientY + (Math.random() * 100 - 50);
+            // Get current position
+            let rect = button.getBoundingClientRect();
+            let currentX = rect.left;
+            let currentY = rect.top;
 
-            // Keep button inside screen
+            // Calculate new position relative to cursor
+            let newX = currentX + (Math.random() * 200 - 100);
+            let newY = currentY + (Math.random() * 200 - 100);
+
+            // Ensure the button stays inside the screen
             newX = Math.max(10, Math.min(newX, screenWidth - buttonWidth - 10));
             newY = Math.max(10, Math.min(newY, screenHeight - buttonHeight - 10));
 
-            button.style.position = "absolute";
+            // Apply new position with smooth transition
+            button.style.transition = "left 0.3s ease-out, top 0.3s ease-out";
             button.style.left = `${newX}px`;
             button.style.top = `${newY}px`;
         }
