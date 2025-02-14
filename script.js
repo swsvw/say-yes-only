@@ -5,20 +5,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("JavaScript is running!");
 
-    // Create Floating Hearts
-    function createFloatingHeart() {
-        let heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = ["❤️", "💖", "🌹", "💗", "💘"][Math.floor(Math.random() * 5)];
-        heart.style.left = `${Math.random() * 100}vw`;
-        heart.style.animationDuration = `${3 + Math.random() * 3}s`;
-        heartsContainer.appendChild(heart);
+    // Create Floating Hearts & Flowers
+    function createFloatingElement() {
+        let element = document.createElement("div");
+        element.classList.add("floating-element");
+        element.innerHTML = ["❤️", "💖", "🌹", "💗", "💘", "🌸", "🌷", "💐"][Math.floor(Math.random() * 8)];
+        element.style.left = `${Math.random() * 100}vw`;
+        element.style.animationDuration = `${6 + Math.random() * 3}s`;
+        heartsContainer.appendChild(element);
 
-        setTimeout(() => heart.remove(), 6000);
+        setTimeout(() => element.remove(), 6000);
     }
 
-    // Start Floating Hearts Every 500ms
-    let heartInterval = setInterval(createFloatingHeart, 500);
+    // Start Floating Elements Every 300ms
+    let floatingInterval = setInterval(createFloatingElement, 300); // Faster spawning
 
     // "No" Button Moves Away on Hover
     if (noBtn) {
@@ -38,12 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             console.log("Yes button clicked!");
 
-            // Increase Heart Floating Speed
-            clearInterval(heartInterval);
-            heartInterval = setInterval(createFloatingHeart, 100); // Faster heart spawning
+            // Increase Animation Speed
+            clearInterval(floatingInterval);
+            floatingInterval = setInterval(createFloatingElement, 100); // Super fast floating
 
             // Celebration Animation (Confetti Effect)
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 30; i++) { // More confetti
                 let celebration = document.createElement("div");
                 celebration.classList.add("celebration");
                 celebration.innerText = "🎉";
@@ -54,14 +54,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => celebration.remove(), 1000);
             }
 
-            // **Try Redirecting**
+            // Redirect to flower.html after 2 seconds
             setTimeout(() => {
                 console.log("Redirecting to flower.html...");
 
-                // Try normal redirect
+                // Normal redirect
                 window.location.href = "flower.html";
 
-                // Backup: Force reload in case normal redirect fails
+                // Backup redirect if first fails
                 setTimeout(() => {
                     window.location.assign("flower.html");
                 }, 3000);
