@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
+    <title>Valentine's Request</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>Will you be my Valentine? ❤️</h1>
-        <button id="yesBtn">Yes</button>
-        <button id="noBtn">No</button>
+        <h1>Will you be my Valentine, Beautiful? ❤️</h1>
+        <div class="buttons">
+            <button id="yesButton" class="yes">Yes muah 💚</button>
+            <button id="noButton" class="no">No 🖤</button>
+        </div>
     </div>
 
-    <!-- Floating Hearts Container -->
-    <div class="hearts-container"></div>
+    <script>
+        document.getElementById("yesButton").addEventListener("click", function() {
+            window.location.href = "flower.html";
+        });
 
-    <script src="script.js"></script>
+        document.getElementById("noButton").addEventListener("click", function() {
+            alert("Oh no! 💔");
+        });
+    </script>
 </body>
 </html>
