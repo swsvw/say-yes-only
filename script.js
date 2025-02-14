@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 💖 Create Floating Hearts (3x More, Goes to Top)
     function createFloatingHeart() {
-        for (let i = 0; i < 30; i++) { // Increased to 3x more
+        for (let i = 0; i < 30; i++) {
             let heart = document.createElement("div");
             heart.classList.add("heart");
             heart.innerHTML = ["❤️", "💖", "🌹", "💗", "💘"][Math.floor(Math.random() * 5)];
@@ -23,14 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (noBtn) {
         noBtn.addEventListener("mouseover", function () {
             let btnRect = noBtn.getBoundingClientRect();
-            let maxX = window.innerWidth - btnRect.width - 20; // Keep inside right boundary
-            let maxY = window.innerHeight - btnRect.height - 20; // Keep inside bottom boundary
+            let maxX = window.innerWidth - btnRect.width - 20;
+            let maxY = window.innerHeight - btnRect.height - 20;
 
             let newX = Math.min(Math.max(Math.random() * window.innerWidth, 10), maxX);
             let newY = Math.min(Math.max(Math.random() * window.innerHeight, 10), maxY);
 
             noBtn.style.position = "absolute";
-            noBtn.style.transition = "0.3s ease-in-out"; // Smooth movement
+            noBtn.style.transition = "0.3s ease-in-out";
             noBtn.style.left = `${newX}px`;
             noBtn.style.top = `${newY}px`;
         });
@@ -61,14 +61,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setTimeout(() => {
                 showFinalMessage();
-                setTimeout(() => {
-                    window.location.href = "flower.html"; // 🌸 Redirects after 2 sec
-                }, 2000);
             }, 2000);
         });
     }
 
-    // ✨ Show Final Message in Translucent Box
+    // ✨ Show Final Message in Translucent Box + Redirect
     function showFinalMessage() {
         finalMessage.style.display = "flex";
         finalMessage.classList.add("vibrant-effect");
@@ -87,11 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setTimeout(() => confetti.remove(), 1500);
         }
-    }
 
-    // 🌸 Redirect to `flower.html` after 2 seconds
-    setTimeout(() => {
-        window.location.href = "flower.html";
-    }, 2000);
-    
+        // 🌸 Redirect to `flower.html` after 2 seconds
+        setTimeout(() => {
+            window.location.href = "flower.html";
+        }, 2000);
+    }
 });
