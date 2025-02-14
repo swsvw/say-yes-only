@@ -88,4 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => confetti.remove(), 1500);
         }
     }
+
+    // 🌸 Redirect to `flower.html` after 2 seconds
+    setTimeout(() => {
+        window.location.href = "flower.html";
+    }, 2000);
+    
 });
