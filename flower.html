@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pick Your Flowers</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pick a Flower</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Pick the flowers you like! 🌸💐🌺</h1>
-        <div class="flower-list">
-            <div class="flower">🌹</div>
-            <div class="flower">🌷</div>
-            <div class="flower">🌻</div>
-            <div class="flower">🌼</div>
-            <div class="flower">💐</div>
-        </div>
+    <div class="flower-selection-container">
+        <h1>Pick the flowers you like! 🌸💐</h1>
         <p>Press "Enter" after selecting to continue!</p>
+        
+        <div class="flower-container">
+            <img src="https://cdn.bloomsflora.com/uploads/product/flowers_n_fruits/1632393015_115.jpg" alt="Bouquet" class="flower">
+            <img src="https://www.juneflowers.com/wp-content/uploads/2022/08/03b.png" alt="Single Flower" class="flower">
+            <img src="https://www.thefloralmart.com/wp-content/uploads/2020/06/TFMVD008-A.main_.jpg" alt="Roses" class="flower">
+            <img src="https://images.unsplash.com/photo-1488928741225-2aaf732c96cc?fm=jpg&q=60&w=3000" alt="Tulips" class="flower">
+            <img src="https://hub.suttons.co.uk/wp-content/uploads/2022/07/20220729_suttons_narcissus_sunshine_mix.jpg" alt="Daffodils" class="flower">
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let selectedFlowers = [];
+
+            document.querySelectorAll(".flower").forEach(img => {
+                img.addEventListener("click", function () {
+                    if (selectedFlowers.includes(this)) {
+                        this.style.border = "none";
+                        selectedFlowers = selectedFlowers.filter(flower => flower !== this);
+                    } else {
+                        this.style.border = "4px solid #ff4081";
+                        selectedFlowers.push(this);
+                    }
+                });
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" && selectedFlowers.length > 0) {
+                    alert("Thank you d. would love to see you soon. xoxo 💕");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

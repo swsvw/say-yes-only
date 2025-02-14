@@ -1,41 +1,41 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ff4d4d;
+    background-color: #ff758c;
     text-align: center;
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: Arial, sans-serif;
 }
 
-.container {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 30px;
+.flower-selection-container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
     border-radius: 15px;
+    display: inline-block;
+    margin-top: 50px;
+    text-align: center;
 }
 
 h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
+    font-size: 24px;
+    color: #fff;
 }
 
-button {
-    font-size: 20px;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 10px;
+p {
+    color: #fff;
+}
+
+.flower-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.flower {
+    width: 120px;
+    height: auto;
     cursor: pointer;
-    border: none;
+    transition: transform 0.3s ease-in-out;
 }
 
-#yesBtn {
-    background-color: green;
-    color: white;
-}
-
-#noBtn {
-    background-color: black;
-    color: white;
-    position: relative;
+.flower:hover {
+    transform: scale(1.1);
 }
