@@ -1,57 +1,59 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Floating hearts animation
-    function createFloatingEmoji() {
-        const floatingContainer = document.getElementById("floatingContainer");
-        const emoji = document.createElement("div");
-        emoji.classList.add("heart");
-        emoji.innerHTML = "❤️";
+    let noBtn = document.getElementById("noBtn");
+    let yesBtn = document.getElementById("yesBtn");
 
-        // Random position
-        emoji.style.left = Math.random() * window.innerWidth + "px";
-        emoji.style.top = window.innerHeight + "px";
+    // Floating hearts and flowers
+    function createFloatingElements() {
+        const icons = ["❤️", "🌸", "💐", "🌺", "😍"];
+        let element = document.createElement("div");
+        element.innerText = icons[Math.floor(Math.random() * icons.length)];
+        element.classList.add("floating");
+        element.style.left = Math.random() * 100 + "vw";
+        element.style.animationDuration = Math.random() * 2 + 3 + "s";
+        document.body.appendChild(element);
 
-        floatingContainer.appendChild(emoji);
+        setTimeout(() => element.remove(), 5000);
+    }
+    
+    setInterval(createFloatingElements, 700);
 
-        setTimeout(() => emoji.remove(), 4000);
+    // Move "No" button randomly
+    if (noBtn) {
+        noBtn.addEventListener("mouseover", function () {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = "absolute";
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
     }
 
-    setInterval(createFloatingEmoji, 500);
+    // "Yes" button click event
+    if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+            yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+            
+            // Trigger confetti
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createConfetti(), i * 50);
+            }
 
-    // Button click event for "Yes"
-    document.getElementById("yesBtn").addEventListener("click", function () {
-        triggerPartyAnimation();
-        setTimeout(() => {
-            window.location.href = "flower.html";
-        }, 1500);
-    });
-
-    // No button movement
-    const noBtn = document.getElementById("noBtn");
-    noBtn.addEventListener("mouseover", function () {
-        noBtn.style.position = "absolute";
-        noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
-        noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
-    });
-
-    // Party pop-up effect on "Yes"
-    function triggerPartyAnimation() {
-        for (let i = 0; i < 20; i++) {
-            const popper = document.createElement("div");
-            popper.classList.add("party");
-            popper.innerHTML = ["🎉", "🎊", "🥳", "💖"][Math.floor(Math.random() * 4)];
-
-            popper.style.left = Math.random() * window.innerWidth + "px";
-            popper.style.top = Math.random() * window.innerHeight + "px";
-
-            document.body.appendChild(popper);
-            setTimeout(() => popper.remove(), 1000);
-        }
+            setTimeout(() => {
+                window.location.href = "flower.html";
+            }, 2000);
+        });
     }
 
-    // "Enter" key to go to the next page
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            window.location.href = "flower.html";
-        }
-    });
+    // Confetti Effect
+    function createConfetti() {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.top = "-10px";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.animationDuration = Math.random() * 2 + 2 + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 2000);
+    }
 });
