@@ -39,7 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.addEventListener("keydown", function (event) {
             if (event.key === "Enter" && selectedFlowers.length > 0) {
-                alert("Thank you d. would love to see you soon. xoxo 💕");
+                document.body.innerHTML = `
+                    <div class="container">
+                        <h1>Thank you d. would love to see you soon. xoxo 💕</h1>
+                    </div>
+                `;
             }
         });
     }
