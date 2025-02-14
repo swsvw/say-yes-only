@@ -42,14 +42,13 @@ button {
 #noBtn {
     background-color: black;
     color: white;
-    position: relative;
+    position: absolute;
 }
 
-/* Floating hearts and flowers animation */
+/* Floating hearts & flowers */
 .floating {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    font-size: 20px;
     opacity: 0.8;
     animation: float 5s linear infinite;
 }
@@ -85,4 +84,51 @@ button {
         transform: translateY(100vh) translateX(calc(-50px + 100px * random()));
         opacity: 0;
     }
+}
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fffaf0;
+    overflow: hidden;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.flower-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.flower {
+    width: 150px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.flower:hover {
+    transform: scale(1.2);
+}
+
+#floatingContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.floating {
+    position: absolute;
+    font-size: 24px;
+    animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.8); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
 }

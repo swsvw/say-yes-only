@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     let noBtn = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
-    let floatingContainer = document.getElementById("floatingContainer");
+    let floatingContainer = document.createElement("div");
+    document.body.appendChild(floatingContainer);
 
-    // Floating hearts and flowers generator
+    // Floating hearts & flowers generator
     function createFloatingElement() {
         const emojiArray = ["❤️", "🌸", "💐", "🌺", "💖", "🌹"];
         const element = document.createElement("div");
@@ -12,28 +13,27 @@ document.addEventListener("DOMContentLoaded", function () {
         element.style.left = Math.random() * 100 + "vw";
         element.style.top = "100vh";
         element.style.animationDuration = Math.random() * 3 + 2 + "s";
-        element.style.fontSize = Math.random() * 10 + 20 + "px";
-        floatingContainer.appendChild(element);
+        element.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(element);
 
         setTimeout(() => {
             element.remove();
         }, 5000);
     }
 
-    setInterval(createFloatingElement, 500); // Create floating elements every 500ms
+    setInterval(createFloatingElement, 400); // Floating elements every 400ms
 
     // No button moves away
     if (noBtn) {
         noBtn.addEventListener("mouseover", function () {
             let x = Math.random() * (window.innerWidth - 100);
             let y = Math.random() * (window.innerHeight - 50);
-            noBtn.style.position = "absolute";
             noBtn.style.left = `${x}px`;
             noBtn.style.top = `${y}px`;
         });
     }
 
-    // Confetti Animation Function
+    // Confetti Animation
     function createConfetti() {
         for (let i = 0; i < 50; i++) {
             let confetti = document.createElement("div");
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Yes button action
     if (yesBtn) {
         yesBtn.addEventListener("click", function () {
-            yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+            yesBtn.innerText = "YAYYY!! 💖";
             createConfetti();
 
             setTimeout(() => {
@@ -66,4 +66,28 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 3000);
         });
     }
+});
+document.addEventListener("DOMContentLoaded", function () {
+    let floatingContainer = document.getElementById("floatingContainer");
+    
+    function createFloatingEmoji() {
+        let emojiArray = ["❤️", "🌸", "💐", "🌹", "🌷"];
+        let emoji = document.createElement("div");
+        emoji.innerText = emojiArray[Math.floor(Math.random() * emojiArray.length)];
+        emoji.classList.add("floating");
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
+        floatingContainer.appendChild(emoji);
+
+        setTimeout(() => emoji.remove(), 4000);
+    }
+
+    setInterval(createFloatingEmoji, 500);
+
+    // "Enter" key event to move forward
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            window.location.href = "nextPage.html"; // Change this to the actual next page URL
+        }
+    });
 });
