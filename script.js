@@ -1,67 +1,65 @@
 document.addEventListener("DOMContentLoaded", function () {
     let noBtn = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
-    let floatingContainer = document.getElementById("floatingContainer");
+    let heartsContainer = document.querySelector(".hearts-container");
 
-    // Floating hearts generator
-    function createFloatingElement() {
-        const emojiArray = ["❤️", "🌸", "🌺", "💖", "🌹"];
-        const element = document.createElement("div");
-        element.classList.add("floating");
-        element.innerText = emojiArray[Math.floor(Math.random() * emojiArray.length)];
-        element.style.left = Math.random() * 100 + "vw";
-        element.style.bottom = "0";
-        element.style.animationDuration = Math.random() * 3 + 2 + "s";
-        floatingContainer.appendChild(element);
+    console.log("JavaScript is running!");
 
-        setTimeout(() => {
-            element.remove();
-        }, 5000);
+    // Create Floating Hearts
+    function createFloatingHeart() {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = ["❤️", "💖", "🌹", "💗", "💘"][Math.floor(Math.random() * 5)];
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
     }
 
-    setInterval(createFloatingElement, 300); // More floating elements now
+    // Start Floating Hearts Every 500ms
+    let heartInterval = setInterval(createFloatingHeart, 500);
 
-    // No button moves away but stays on screen
+    // "No" Button Moves Away on Hover
     if (noBtn) {
-        noBtn.addEventListener("mouseover", function (event) {
+        noBtn.addEventListener("mouseover", function () {
             let x = Math.random() * (window.innerWidth - 100);
             let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = "absolute";
             noBtn.style.left = `${x}px`;
             noBtn.style.top = `${y}px`;
         });
     }
 
-    // Confetti Celebration
-    function createConfetti() {
-        for (let i = 0; i < 100; i++) {  // Increased confetti
-            let confetti = document.createElement("div");
-            confetti.classList.add("confetti");
-            confetti.style.setProperty("--color", getRandomColor());
-            confetti.style.left = Math.random() * 100 + "vw";
-            confetti.style.bottom = "0";
-            confetti.style.animationDuration = Math.random() * 2 + 1 + "s";
-            document.body.appendChild(confetti);
-
-            setTimeout(() => {
-                confetti.remove();
-            }, 2000);
-        }
-    }
-
-    function getRandomColor() {
-        const colors = ["#FFD700", "#FF69B4", "#00FF7F", "#FF4500", "#1E90FF"];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    // Yes button action
+    // "Yes" Button Click Effect
     if (yesBtn) {
         yesBtn.addEventListener("click", function () {
             yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
-            createConfetti();
+            yesBtn.style.backgroundColor = "#ff4081"; // Cute pink color
 
+            console.log("Yes button clicked!");
+
+            // Increase Heart Floating Speed
+            clearInterval(heartInterval);
+            heartInterval = setInterval(createFloatingHeart, 100); // Faster heart spawning
+
+            // Celebration Animation (Confetti Effect)
+            for (let i = 0; i < 20; i++) {
+                let celebration = document.createElement("div");
+                celebration.classList.add("celebration");
+                celebration.innerText = ["🎉", "✨", "🎆", "💞", "💓"][Math.floor(Math.random() * 5)];
+                celebration.style.left = `${Math.random() * 100}vw`;
+                celebration.style.top = `${Math.random() * 100}vh`;
+                document.body.appendChild(celebration);
+
+                setTimeout(() => celebration.remove(), 1000);
+            }
+
+            // Ensure Redirect Works After 2 Seconds
             setTimeout(() => {
+                console.log("Redirecting to flower.html...");
                 window.location.href = "flower.html";
-            }, 3000);
+            }, 2000);
         });
     }
 });

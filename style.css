@@ -91,3 +91,37 @@ button {
         opacity: 0;
     }
 }
+.heart {
+    position: absolute;
+    font-size: 24px;
+    animation: floatUp 3s linear infinite;
+    opacity: 0.8;
+}
+
+.celebration {
+    position: absolute;
+    font-size: 30px;
+    animation: pop 1s ease-out;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
