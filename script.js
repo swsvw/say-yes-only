@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const yesButton = document.getElementById("yesButton");
 
     if (noButton && yesButton) {
-        // Make "No" button move away
+        // Make "No" button run away from the cursor
         noButton.addEventListener("mouseover", function() {
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 50);
+            const x = Math.random() * window.innerWidth - 100;
+            const y = Math.random() * window.innerHeight - 50;
             noButton.style.position = "absolute";
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
@@ -16,35 +16,27 @@ document.addEventListener("DOMContentLoaded", function() {
         yesButton.addEventListener("click", function() {
             document.body.innerHTML = "<h1>YAYY HAHAHA U MADE MY DAY!!😙🥰😍😳</h1>";
 
-            // Redirect to flower page after 2 seconds
+            // Wait 2 seconds, then move to flower page
             setTimeout(function() {
                 window.location.href = "flower.html";
             }, 2000);
         });
     }
 
-    // Flower Selection Page Logic
-    if (document.body.id === "flowerScreen") {
-        const flowers = document.querySelectorAll(".flower");
-        let selectedFlowers = [];
+    // Flower selection page logic
+    const flowers = document.querySelectorAll(".flower");
 
+    if (flowers.length > 0) {
+        // Toggle selection on click
         flowers.forEach(flower => {
             flower.addEventListener("click", function() {
                 this.classList.toggle("selected");
-
-                // Add or remove flower from selection
-                const flowerName = this.getAttribute("alt");
-                if (selectedFlowers.includes(flowerName)) {
-                    selectedFlowers = selectedFlowers.filter(name => name !== flowerName);
-                } else {
-                    selectedFlowers.push(flowerName);
-                }
             });
         });
 
-        // Press Enter to display message
+        // Show message when Enter is pressed
         document.addEventListener("keydown", function(event) {
-            if (event.key === "Enter" && selectedFlowers.length > 0) {
+            if (event.key === "Enter") {
                 alert("Thank you d. would love to see you soon. xoxo 💕");
             }
         });
