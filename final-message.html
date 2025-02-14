@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Message</title>
+    <link rel="stylesheet" href="final-style.css">
+</head>
+<body>
+    <div class="final-message">
+        <h1 id="messageText">Great choice, d. Would love to see you soon. xoxo 💕</h1>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let chosenFlowers = JSON.parse(sessionStorage.getItem("chosenFlowers"));
+            if (chosenFlowers && chosenFlowers.length > 0) {
+                document.getElementById("messageText").innerText = `Great choice, d! You picked ${chosenFlowers.join(", ")}. Would love to see you soon. xoxo 💕`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -12,9 +12,8 @@ function selectFlower(element) {
 
 document.getElementById("confirmSelection").addEventListener("click", function () {
     if (selectedFlowers.length > 0) {
-        document.body.innerHTML = `<div class="final-message">
-            <h1>Great choice, d. Would love to see you soon. xoxo 💕</h1>
-        </div>`;
+        sessionStorage.setItem("chosenFlowers", JSON.stringify(selectedFlowers));
+        window.location.href = "final-message.html";  // 🌸 Redirect to Final Message
     } else {
         alert("Please select at least one flower! 🌸");
     }
