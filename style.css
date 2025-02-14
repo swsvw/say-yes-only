@@ -135,14 +135,6 @@ button {
         opacity: 0;
     }
 }
-body {
-    background-color: #ffe6eb; /* Light pink background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
 
 .message-box {
     background: rgba(255, 192, 203, 0.7); /* Translucent pink box */
