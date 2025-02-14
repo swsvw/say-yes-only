@@ -148,3 +148,59 @@ button {
         opacity: 0;
     }
 }
+/* Hearts floating smoothly to the top */
+.heart {
+    position: fixed;
+    font-size: 2rem;
+    bottom: -50px;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh); /* Goes all the way to the top */
+        opacity: 0;
+    }
+}
+
+/* Confetti Animation */
+.confetti {
+    position: fixed;
+    font-size: 1.5rem;
+    animation: floatUp 1.5s ease-out forwards;
+    opacity: 1;
+}
+
+/* Translucent Final Message Box */
+#finalMessage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 2rem;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Vibrant Effect */
+.vibrant-effect {
+    animation: vibrantGlow 1s infinite alternate;
+}
+
+@keyframes vibrantGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+    }
+}

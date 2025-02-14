@@ -4,50 +4,38 @@ document.addEventListener("DOMContentLoaded", function () {
     let heartsContainer = document.querySelector(".hearts-container");
     let finalMessage = document.getElementById("finalMessage"); // Final message container
 
-    // Create Floating Hearts & Flowers (2x more)
+    // 💖 Create Floating Hearts (3x More, Goes to Top)
     function createFloatingHeart() {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 30; i++) { // Increased to 3x more
             let heart = document.createElement("div");
             heart.classList.add("heart");
             heart.innerHTML = ["❤️", "💖", "🌹", "💗", "💘"][Math.floor(Math.random() * 5)];
             heart.style.left = `${Math.random() * 100}vw`;
-            heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+            heart.style.animationDuration = `${2 + Math.random() * 2}s`; // Faster floating
             heartsContainer.appendChild(heart);
 
-            setTimeout(() => heart.remove(), 6000);
+            setTimeout(() => heart.remove(), 5000);
         }
     }
-    setInterval(createFloatingHeart, 500);
+    setInterval(createFloatingHeart, 300);
 
-    // No Button Moves Away (Stays on Screen)
+    // 😈 "No" Button Moves Away Smoothly
     if (noBtn) {
-        noBtn.addEventListener("mouseenter", function (event) {
-            moveButtonAway(event, noBtn);
+        noBtn.addEventListener("mouseover", function () {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = "absolute";
+            noBtn.style.transition = "0.3s ease-in-out"; // Smooth movement
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
         });
-
-        function moveButtonAway(event, button) {
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
-            const buttonWidth = button.clientWidth;
-            const buttonHeight = button.clientHeight;
-
-            let newX = event.clientX + (Math.random() * 100 - 50); // Move randomly away
-            let newY = event.clientY + (Math.random() * 100 - 50);
-
-            // Keep button inside screen
-            newX = Math.max(10, Math.min(newX, screenWidth - buttonWidth - 10));
-            newY = Math.max(10, Math.min(newY, screenHeight - buttonHeight - 10));
-
-            button.style.position = "absolute";
-            button.style.left = `${newX}px`;
-            button.style.top = `${newY}px`;
-        }
     }
 
-    // Yes Button Celebration Effect (4x More Celebration)
+    // 🎉 "Yes" Button Celebration Effect
     if (yesBtn) {
         yesBtn.addEventListener("click", function () {
             yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+            yesBtn.style.backgroundColor = "#ff4081";
 
             // Speed Up Hearts
             document.querySelectorAll(".heart").forEach(heart => {
@@ -72,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Show Final Message in Translucent Box
+    // ✨ Show Final Message in Translucent Box
     function showFinalMessage() {
         finalMessage.style.display = "flex"; // Show the message
         finalMessage.classList.add("vibrant-effect");
@@ -82,9 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let confetti = document.createElement("div");
             confetti.classList.add("confetti");
             confetti.innerText = ["✨", "🎊", "🎈", "💖", "💘"][Math.floor(Math.random() * 5)];
-            confetti.style.left = `${Math.random() * 100}vw`;
-            confetti.style.top = `${Math.random() * 100}vh`;
             document.body.appendChild(confetti);
+
+            // Randomize confetti position
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            confetti.style.left = `${x}px`;
+            confetti.style.top = `${y}px`;
 
             setTimeout(() => confetti.remove(), 1500);
         }
