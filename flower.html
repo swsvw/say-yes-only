@@ -10,14 +10,17 @@
     <div class="container">
         <h1>Pick the flowers you like! 🌸💐🌺</h1>
         <div class="flower-container">
-            <img src="https://cdn.bloomsflora.com/uploads/product/flowers_n_fruits/1632393015_115.jpg" alt="Bouquet" class="flower">
-            <img src="https://www.juneflowers.com/wp-content/uploads/2022/08/03b.png" alt="Single Flower" class="flower">
-            <img src="https://www.thefloralmart.com/wp-content/uploads/2020/06/TFMVD008-A.main_.jpg" alt="Roses" class="flower">
-            <img src="https://images.unsplash.com/photo-1488928741225-2aaf732c96cc?fm=jpg&q=60&w=3000" alt="Tulips" class="flower">
-            <img src="https://hub.suttons.co.uk/wp-content/uploads/2022/07/20220729_suttons_narcissus_sunshine_mix.jpg" alt="Daffodils" class="flower">
+            <img src="https://cdn.bloomsflora.com/uploads/product/flowers_n_fruits/1632393015_115.jpg" alt="Bouquet" class="flower" onclick="selectFlower(this)">
+            <img src="https://www.juneflowers.com/wp-content/uploads/2022/08/03b.png" alt="Single Flower" class="flower" onclick="selectFlower(this)">
+            <img src="https://www.thefloralmart.com/wp-content/uploads/2020/06/TFMVD008-A.main_.jpg" alt="Roses" class="flower" onclick="selectFlower(this)">
+            <img src="https://images.unsplash.com/photo-1488928741225-2aaf732c96cc?fm=jpg&q=60&w=3000" alt="Tulips" class="flower" onclick="selectFlower(this)">
+            <img src="https://hub.suttons.co.uk/wp-content/uploads/2022/07/20220729_suttons_narcissus_sunshine_mix.jpg" alt="Daffodils" class="flower" onclick="selectFlower(this)">
         </div>
-        <button id="confirmSelection">Confirm</button>
-        <p id="chosenFlower"></p>
+
+        <div class="confirmation-box">
+            <button id="confirmSelection">Confirm</button>
+            <p id="chosenFlower"></p>
+        </div>
     </div>
 
     <script src="flower-script.js"></script>
