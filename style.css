@@ -131,3 +131,20 @@ button {
 #noBtn {
     transition: left 0.3s ease-out, top 0.3s ease-out;
 }
+.confetti {
+    position: fixed;
+    font-size: 1.5rem;
+    animation: floatUp 1.5s ease-out forwards;
+    opacity: 1;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}

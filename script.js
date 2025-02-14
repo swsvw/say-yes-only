@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     setInterval(createFloatingHeart, 500);
 
-    // No Button Moves Away (Stays on Screen & Moves Dynamically)
+    // No Button Moves Away (Opposite Direction from Cursor)
     if (noBtn) {
         noBtn.style.position = "absolute"; // Ensure position is absolute
 
-        noBtn.addEventListener("mouseenter", function (event) {
+        noBtn.addEventListener("mousemove", function (event) {
             moveButtonAway(event, noBtn);
         });
 
@@ -33,21 +33,32 @@ document.addEventListener("DOMContentLoaded", function () {
             const buttonWidth = button.clientWidth;
             const buttonHeight = button.clientHeight;
 
-            // Get current position
             let rect = button.getBoundingClientRect();
-            let currentX = rect.left;
-            let currentY = rect.top;
+            let buttonX = rect.left + buttonWidth / 2;
+            let buttonY = rect.top + buttonHeight / 2;
 
-            // Calculate new position relative to cursor
-            let newX = currentX + (Math.random() * 200 - 100);
-            let newY = currentY + (Math.random() * 200 - 100);
+            let cursorX = event.clientX;
+            let cursorY = event.clientY;
+
+            // Calculate direction away from cursor
+            let deltaX = buttonX - cursorX;
+            let deltaY = buttonY - cursorY;
+            let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+            // Normalize direction
+            let moveX = (deltaX / distance) * 100;
+            let moveY = (deltaY / distance) * 100;
+
+            // New Position
+            let newX = buttonX + moveX;
+            let newY = buttonY + moveY;
 
             // Ensure the button stays inside the screen
             newX = Math.max(10, Math.min(newX, screenWidth - buttonWidth - 10));
             newY = Math.max(10, Math.min(newY, screenHeight - buttonHeight - 10));
 
             // Apply new position with smooth transition
-            button.style.transition = "left 0.3s ease-out, top 0.3s ease-out";
+            button.style.transition = "left 0.2s ease-out, top 0.2s ease-out";
             button.style.left = `${newX}px`;
             button.style.top = `${newY}px`;
         }
