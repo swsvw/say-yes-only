@@ -3,20 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
+    <title>Valentine's Request</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="hearts-container"></div> <!-- Floating hearts container -->
 
     <div class="container">
-        <h1>Will you be my Valentine Beautiful? ❤️</h1>
-        <button id="yesBtn">Yes</button>
-        <button id="noBtn">No</button>
+        <h1>Will you be my Valentine, Beautiful? ❤️</h1>
+        <div class="buttons">
+            <button id="yesButton" class="yes">Yes muah 💚</button>
+            <button id="noButton" class="no">No 🖤</button>
+        </div>
     </div>
 
-    <!-- Floating Hearts Container -->
-    <div class="hearts-container"></div>
+    <script>
+        // Redirect on "Yes" click + confetti effect
+        document.getElementById("yesButton").addEventListener("click", function() {
+            startConfetti(); // Celebration effect
+            setTimeout(() => {
+                window.location.href = "flower.html";
+            }, 2000); // Redirect after 2 seconds
+        });
 
-    <script src="script.js"></script>
+        // Make "No" button run away
+        const noButton = document.getElementById("noButton");
+
+        noButton.addEventListener("mouseover", function() {
+            const maxX = window.innerWidth - noButton.clientWidth - 20;
+            const maxY = window.innerHeight - noButton.clientHeight - 20;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noButton.style.position = "absolute";
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        });
+
+        // Floating hearts animation
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw"; // Random position
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // Random speed
+
+            document.querySelector(".hearts-container").appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 500); // Create hearts every 0.5s
+
+        // Confetti effect when "Yes" is clicked
+        function startConfetti() {
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 2 + 3 + "s";
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+    </script>
 </body>
 </html>
