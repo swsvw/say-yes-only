@@ -45,11 +45,10 @@ button {
     position: absolute;
 }
 
-/* Floating hearts and confetti UPWARDS */
+/* Floating hearts */
 .floating {
     position: absolute;
-    width: 30px;
-    height: 80px;
+    font-size: 30px;
     opacity: 0.8;
     animation: float-up 3s linear infinite;
 }
@@ -65,14 +64,13 @@ button {
     }
 }
 
-/* Confetti shooting upwards */
+/* Confetti */
 .confetti {
-    position: fixed;
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    width: 10px;
+    height: 10px;
     background: var(--color);
-    opacity: 0.8;
-    border-radius: 80%;
+    border-radius: 50%;
     animation: confetti-rise 2s linear forwards;
 }
 

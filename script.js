@@ -3,6 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
     let yesBtn = document.getElementById("yesBtn");
     let floatingContainer = document.getElementById("floatingContainer");
 
+    // Move "No" button away from the cursor
+    document.addEventListener("mousemove", function (event) {
+        let dx = Math.abs(event.clientX - noBtn.offsetLeft);
+        let dy = Math.abs(event.clientY - noBtn.offsetTop);
+
+        if (dx < 100 && dy < 50) {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+    });
+
     // Floating hearts generator
     function createFloatingElement() {
         const emojiArray = ["❤️", "🌸", "💐", "🌺", "💖", "🌹"];
@@ -20,21 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 5000);
     }
 
-    setInterval(createFloatingElement, 500); // Create floating elements every 500ms
+    setInterval(createFloatingElement, 200); // More hearts
 
-    // No button moves away but stays on screen
-    if (noBtn) {
-        noBtn.addEventListener("mouseover", function (event) {
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 50);
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
-        });
-    }
-
-    // Confetti Animation Function (Upwards)
+    // Confetti Animation
     function createConfetti() {
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 100; i++) { // More confetti
             let confetti = document.createElement("div");
             confetti.classList.add("confetti");
             confetti.style.setProperty("--color", getRandomColor());
@@ -55,14 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Yes button action
-    if (yesBtn) {
-        yesBtn.addEventListener("click", function () {
-            yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
-            createConfetti();
+    yesBtn.addEventListener("click", function () {
+        yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+        createConfetti();
 
-            setTimeout(() => {
-                window.location.href = "flower.html";
-            }, 3000);
-        });
-    }
+        setTimeout(() => {
+            window.location.href = "flower.html";
+        }, 3000);
+    });
 });
