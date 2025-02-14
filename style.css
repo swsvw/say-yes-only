@@ -1,53 +1,52 @@
-/* General Styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ff4d4d;
+    font-family: "Arial", sans-serif;
     text-align: center;
-    color: white;
-    height: 100vh;
+    background: linear-gradient(to bottom right, #ffebcd, #ffc0cb);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-/* Center Container */
 .container {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    border-radius: 15px;
+    margin-top: 50px;
 }
 
-/* Main Heading */
 h1 {
     font-size: 28px;
-    margin-bottom: 20px;
+    color: #d63384;
+    font-weight: bold;
 }
 
-/* Buttons */
-button {
-    font-size: 20px;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 10px;
+.flower-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.flower {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
     cursor: pointer;
-    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
 }
 
-#yesBtn {
-    background-color: green;
-    color: white;
+.flower:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-#noBtn {
-    background-color: black;
-    color: white;
-    position: relative;
+/* Instruction text */
+.instruction {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #8b0000;
 }
 
-/* Floating Hearts */
-.hearts-container {
+/* Floating hearts & flowers */
+#floatingContainer {
     position: fixed;
     top: 0;
     left: 0;
@@ -56,38 +55,14 @@ button {
     pointer-events: none;
 }
 
-.heart {
+.floating {
     position: absolute;
-    font-size: 30px;
-    animation: floatUp 5s linear infinite;
+    font-size: 24px;
+    opacity: 0.8;
+    animation: floatUp 4s linear infinite;
 }
 
-/* Heart Floating Animation */
 @keyframes floatUp {
-    from {
-        transform: translateY(100vh);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-10vh);
-        opacity: 0;
-    }
-}
-
-/* Celebration Animation */
-.celebration {
-    position: absolute;
-    font-size: 40px;
-    animation: burst 1s ease-out;
-}
-
-@keyframes burst {
-    from {
-        transform: scale(0);
-        opacity: 1;
-    }
-    to {
-        transform: scale(2);
-        opacity: 0;
-    }
+    0% { transform: translateY(0) scale(0.8); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
 }
