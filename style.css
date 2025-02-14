@@ -7,8 +7,88 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Floating Hearts Animation */
+.hearts-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: 0;
+    font-size: 25px;
+    opacity: 0.7;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: green;
+    color: white;
+}
+
+#noBtn {
+    background-color: black;
+    color: white;
+    position: relative;
+}
+
+/* Celebration Animation */
+.celebration {
+    position: absolute;
+    font-size: 40px;
+    animation: burst 0.8s ease-out;
+}
+
+@keyframes burst {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ff4d4d;
+    text-align: center;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
     flex-direction: column;
-    margin: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
@@ -32,7 +112,7 @@ button {
 }
 
 #yesBtn {
-    background-color: rgb(128, 0, 55);
+    background-color: green;
     color: white;
 }
 
@@ -42,27 +122,48 @@ button {
     position: relative;
 }
 
-.flower-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+/* Floating Hearts Animation */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-.flower {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+.heart {
+    position: absolute;
+    font-size: 30px;
+    animation: floatUp 5s linear infinite;
 }
 
-.flower:hover {
-    transform: scale(1.1);
+@keyframes floatUp {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
 }
 
-.selected {
-    border: 3px solid yellow;
+/* Celebration Animation */
+.celebration {
+    position: absolute;
+    font-size: 40px;
+    animation: burst 1s ease-out;
 }
+
+@keyframes burst {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
