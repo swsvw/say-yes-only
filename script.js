@@ -1,60 +1,68 @@
 document.addEventListener("DOMContentLoaded", function () {
     let noBtn = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
+    let floatingContainer = document.getElementById("floatingContainer");
 
-    // Move "No" button randomly when hovered
-    noBtn.addEventListener("mouseover", function () {
-        let x = Math.random() * (window.innerWidth - 100);
-        let y = Math.random() * (window.innerHeight - 50);
-        noBtn.style.position = "absolute";
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
-    });
-
-    // "Yes" button click event
-    yesBtn.addEventListener("click", function () {
-        yesBtn.innerText = "YAYYY! HAHAHA U MADE MY DAY!! 😙🥰😍😳";
-        yesBtn.style.pointerEvents = "none";
-
-        startCelebration();
+    // Floating hearts generator
+    function createFloatingElement() {
+        const emojiArray = ["❤️", "🌸", "💐", "🌺", "💖", "🌹"];
+        const element = document.createElement("div");
+        element.classList.add("floating");
+        element.innerText = emojiArray[Math.floor(Math.random() * emojiArray.length)];
+        element.style.left = Math.random() * 100 + "vw";
+        element.style.bottom = "0";
+        element.style.animationDuration = Math.random() * 3 + 2 + "s";
+        element.style.fontSize = Math.random() * 10 + 20 + "px";
+        floatingContainer.appendChild(element);
 
         setTimeout(() => {
-            window.location.href = "flower.html";
+            element.remove();
         }, 5000);
-    });
-
-    // Floating hearts and flowers
-    function createFloatingElements() {
-        const icons = ["❤️", "🌸", "🌺", "😍", "💖", "🌹", "🌷"];
-        let element = document.createElement("div");
-        element.innerText = icons[Math.floor(Math.random() * icons.length)];
-        element.classList.add("floating");
-        element.style.left = Math.random() * 100 + "vw";
-        element.style.animationDuration = Math.random() * 2 + 4 + "s";
-        element.style.fontSize = Math.random() * 20 + 20 + "px";
-        document.body.appendChild(element);
-
-        setTimeout(() => element.remove(), 6000);
     }
 
-    setInterval(createFloatingElements, 200);
+    setInterval(createFloatingElement, 500); // Create floating elements every 500ms
 
-    // Confetti Celebration
-    function startCelebration() {
-        for (let i = 0; i < 200; i++) {
-            setTimeout(createConfetti, i * 10);
+    // No button moves away but stays on screen
+    if (noBtn) {
+        noBtn.addEventListener("mouseover", function (event) {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+    }
+
+    // Confetti Animation Function (Upwards)
+    function createConfetti() {
+        for (let i = 0; i < 50; i++) {
+            let confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.setProperty("--color", getRandomColor());
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.bottom = "0";
+            confetti.style.animationDuration = Math.random() * 2 + 1 + "s";
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 2000);
         }
     }
 
-    function createConfetti() {
-        let confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-        confetti.style.left = Math.random() * window.innerWidth + "px";
-        confetti.style.top = "-10px";
-        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-        confetti.style.animationDuration = Math.random() * 1.5 + 1 + "s";
-        document.body.appendChild(confetti);
+    function getRandomColor() {
+        const colors = ["#FFD700", "#FF69B4", "#00FF7F", "#FF4500", "#1E90FF"];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
 
-        setTimeout(() => confetti.remove(), 1500);
+    // Yes button action
+    if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+            yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+            createConfetti();
+
+            setTimeout(() => {
+                window.location.href = "flower.html";
+            }, 3000);
+        });
     }
 });

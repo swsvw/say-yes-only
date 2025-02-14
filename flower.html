@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pick the flowers you like! 🌹🌷💐🌸💐🌺</h1>
+        <h1>Pick the flowers you like! 🌹🌷🌺</h1>
         <div class="flower-container">
             <img src="https://cdn.bloomsflora.com/uploads/product/flowers_n_fruits/1632393015_115.jpg" alt="Bouquet" class="flower">
             <img src="https://www.juneflowers.com/wp-content/uploads/2022/08/03b.png" alt="Single Flower" class="flower">
@@ -17,11 +17,14 @@
             <img src="https://hub.suttons.co.uk/wp-content/uploads/2022/07/20220729_suttons_narcissus_sunshine_mix.jpg" alt="Daffodils" class="flower">
         </div>
         <p>Press "Enter" after selecting to continue!</p>
+        <h1 id="finalMessage" hidden>Thank you, d. Would love to see you soon. xoxo 💕</h1>
     </div>
-
-    <!-- Floating hearts -->
-    <div id="floatingContainer"></div>
-
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                document.getElementById("finalMessage").removeAttribute("hidden");
+            }
+        });
+    </script>
 </body>
 </html>
