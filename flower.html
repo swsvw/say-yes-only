@@ -1,54 +1,20 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You ❤️</title>
-    <link rel="stylesheet" href="style.css">
+    <title>For You 💖</title>
+    <link rel="stylesheet" href="flower-style.css">
 </head>
 <body>
 
     <div class="container">
-        <h1>Here's a special flower for you! 🌸</h1>
+        <h1>For You, My Love 💕</h1>
+        <p>You make my world bloom like these flowers. 🌷🌹💖</p>
     </div>
 
-    <script>
-        // More Hearts for Extra Love
-        setInterval(() => {
-            let flower = document.createElement("div");
-            flower.classList.add("heart");
-            flower.innerHTML = "🌸";
-            flower.style.left = `${Math.random() * 100}vw`;
-            flower.style.animationDuration = `${3 + Math.random() * 3}s`;
-            document.body.appendChild(flower);
+    <div class="hearts-container"></div>
 
-            setTimeout(() => flower.remove(), 6000);
-        }, 300);
-    </script>
-
-</body>
-</html>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pick Your Flowers</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Pick the flowers you like! 🌸💐🌺</h1>
-        <div class="flower-container">
-            <img src="https://cdn.bloomsflora.com/uploads/product/flowers_n_fruits/1632393015_115.jpg" alt="Bouquet" class="flower">
-            <img src="https://www.juneflowers.com/wp-content/uploads/2022/08/03b.png" alt="Single Flower" class="flower">
-            <img src="https://www.thefloralmart.com/wp-content/uploads/2020/06/TFMVD008-A.main_.jpg" alt="Roses" class="flower">
-            <img src="https://images.unsplash.com/photo-1488928741225-2aaf732c96cc?fm=jpg&q=60&w=3000" alt="Tulips" class="flower">
-            <img src="https://hub.suttons.co.uk/wp-content/uploads/2022/07/20220729_suttons_narcissus_sunshine_mix.jpg" alt="Daffodils" class="flower">
-        </div>
-        <p>Press "Enter" after selecting to continue!</p>
-    </div>
-    <script src="script.js"></script>
+    <script src="flower-script.js"></script>
 </body>
 </html>
