@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         element.classList.add("floating-element");
         element.innerHTML = ["❤️", "💖", "🌹", "💗", "💘", "🌸", "🌷", "💐"][Math.floor(Math.random() * 8)];
         element.style.left = `${Math.random() * 100}vw`;
-        element.style.animationDuration = `${6 + Math.random() * 3}s`;
+        element.style.animationDuration = `${2 + Math.random() * 3}s`;
         heartsContainer.appendChild(element);
 
         setTimeout(() => element.remove(), 6000);
