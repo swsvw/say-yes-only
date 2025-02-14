@@ -136,13 +136,3 @@ button {
     }
 }
 
-.message-box {
-    background: rgba(255, 192, 203, 0.7); /* Translucent pink box */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 24px;
-    max-width: 80%;
-}
-
