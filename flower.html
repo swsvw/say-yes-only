@@ -1,4 +1,35 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Here's a special flower for you! 🌸</h1>
+    </div>
+
+    <script>
+        // More Hearts for Extra Love
+        setInterval(() => {
+            let flower = document.createElement("div");
+            flower.classList.add("heart");
+            flower.innerHTML = "🌸";
+            flower.style.left = `${Math.random() * 100}vw`;
+            flower.style.animationDuration = `${3 + Math.random() * 3}s`;
+            document.body.appendChild(flower);
+
+            setTimeout(() => flower.remove(), 6000);
+        }, 300);
+    </script>
+
+</body>
+</html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("JavaScript is running!");
 
-    // Create Floating Hearts Animation
+    // Create Floating Hearts
     function createFloatingHeart() {
         let heart = document.createElement("div");
         heart.classList.add("heart");
@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => heart.remove(), 6000);
     }
 
-    // Start floating hearts every 500ms
+    // Start Floating Hearts Every 500ms
     setInterval(createFloatingHeart, 500);
 
-    // No Button Moves Away
+    // "No" Button Moves Away on Hover
     if (noBtn) {
         noBtn.addEventListener("mouseover", function () {
             let x = Math.random() * (window.innerWidth - 100);
@@ -31,12 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Yes Button Click Effect
+    // "Yes" Button Click Effect
     if (yesBtn) {
         yesBtn.addEventListener("click", function () {
             yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
 
             console.log("Yes button clicked!");
+
+            // Increase Heart Floating Speed
+            clearInterval(heartInterval);
+            setInterval(createFloatingHeart, 100); // Faster heart spawning
 
             // Celebration Animation (Confetti Effect)
             for (let i = 0; i < 20; i++) {
@@ -50,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => celebration.remove(), 1000);
             }
 
-            // Redirect to flower.html after 2 seconds
+            // Redirect to flower.html After 2 Seconds
             setTimeout(() => {
                 window.location.href = "flower.html";
             }, 2000);
