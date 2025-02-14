@@ -63,7 +63,7 @@ button {
 #noBtn {
     background-color: black;
     color: white;
-    position: absolute;
+    position: relative;
 }
 
 /* Celebration Animation */
