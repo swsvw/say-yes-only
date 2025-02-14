@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Floating hearts generator
     function createFloatingElement() {
-        const emojiArray = ["❤️", "🌸", "💐", "🌺", "💖", "🌹"];
+        const emojiArray = ["❤️", "🌸", "🌺", "💖", "🌹"];
         const element = document.createElement("div");
         element.classList.add("floating");
         element.innerText = emojiArray[Math.floor(Math.random() * emojiArray.length)];
