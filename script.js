@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let noBtn = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
     let heartsContainer = document.querySelector(".hearts-container");
+    let speed = 1; // Speed of "No" button movement
 
     // Create Floating Hearts
     function createFloatingHeart() {
@@ -18,37 +19,41 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(createFloatingHeart, 500);
 
     // No Button Runs Away
-    noBtn.addEventListener("mouseover", function () {
-        let x = Math.random() * (window.innerWidth - 100);
-        let y = Math.random() * (window.innerHeight - 50);
-        noBtn.style.position = "absolute";
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
-    });
+    if (noBtn) {
+        noBtn.addEventListener("mouseover", function () {
+            let x = Math.random() * (window.innerWidth - 100) * speed;
+            let y = Math.random() * (window.innerHeight - 50) * speed;
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+            speed += 0.3; // Makes it move faster each time
+        });
+    }
 
     // Yes Button Click Effect
-    yesBtn.addEventListener("click", function () {
-        yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+    if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+            yesBtn.innerText = "YAYY!! 💖😍";
 
-        // Speed Up Hearts
-        document.querySelectorAll(".heart").forEach(heart => {
-            heart.style.animationDuration = "1s";
+            // Speed Up Hearts
+            document.querySelectorAll(".heart").forEach(heart => {
+                heart.style.animationDuration = "1s";
+            });
+
+            // Celebration Animation
+            for (let i = 0; i < 10; i++) {
+                let celebration = document.createElement("div");
+                celebration.classList.add("celebration");
+                celebration.innerText = "🎉";
+                celebration.style.left = `${Math.random() * 100}vw`;
+                celebration.style.top = `${Math.random() * 100}vh`;
+                document.body.appendChild(celebration);
+
+                setTimeout(() => celebration.remove(), 1000);
+            }
+
+            setTimeout(() => {
+                window.location.href = "flower.html";
+            }, 2000);
         });
-
-        // Celebration Animation
-        for (let i = 0; i < 10; i++) {
-            let celebration = document.createElement("div");
-            celebration.classList.add("celebration");
-            celebration.innerText = "🎉";
-            celebration.style.left = `${Math.random() * 100}vw`;
-            celebration.style.top = `${Math.random() * 100}vh`;
-            document.body.appendChild(celebration);
-
-            setTimeout(() => celebration.remove(), 1000);
-        }
-
-        setTimeout(() => {
-            window.location.href = "flower.html";
-        }, 2000);
-    });
+    }
 });
