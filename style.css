@@ -28,8 +28,14 @@ body {
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh); /* Goes all the way to the top */
+        opacity: 0;
+    }
 }
 
 .container {
@@ -64,6 +70,7 @@ button {
     background-color: black;
     color: white;
     position: relative;
+    transition: left 0.3s ease-out, top 0.3s ease-out;
 }
 
 /* Celebration Animation */
@@ -128,134 +135,15 @@ button {
         opacity: 0;
     }
 }
-#noBtn {
-    transition: left 0.3s ease-out, top 0.3s ease-out;
-}
-.confetti {
-    position: fixed;
-    font-size: 1.5rem;
-    animation: floatUp 1.5s ease-out forwards;
-    opacity: 1;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-    }
-}
-/* Hearts floating smoothly to the top */
-.heart {
-    position: fixed;
-    font-size: 2rem;
-    bottom: -50px;
-    animation: floatUp 5s linear infinite;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-120vh); /* Goes all the way to the top */
-        opacity: 0;
-    }
-}
-
-/* Confetti Animation */
-.confetti {
-    position: fixed;
-    font-size: 1.5rem;
-    animation: floatUp 1.5s ease-out forwards;
-    opacity: 1;
-}
-
-/* Translucent Final Message Box */
-#finalMessage {
-    display: none;
+.message-box {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 192, 203, 0.7); /* Light pink with transparency */
     padding: 20px;
     border-radius: 10px;
-    font-size: 2rem;
     text-align: center;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    z-index: 1000;
-}
-
-/* Vibrant Effect */
-.vibrant-effect {
-    animation: vibrantGlow 1s infinite alternate;
-}
-
-@keyframes vibrantGlow {
-    0% {
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    }
-    100% {
-        box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
-    }
-}
-#noBtn {
-    transition: left 0.3s ease-out, top 0.3s ease-out;
-}
-#finalMessage {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 182, 193, 0.8); /* Translucent pink */
-    padding: 20px 40px;
-    border-radius: 10px;
-    font-size: 24px;
     font-weight: bold;
-    color: #333;
-    text-align: center;
-    box-shadow: 0px 0px 20px rgba(255, 105, 180, 0.5);
-}
-
-/* Vibrant Animation */
-.vibrant-effect {
-    animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-        background: rgba(255, 105, 180, 0.8);
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.05);
-        background: rgba(255, 182, 193, 0.9);
-    }
-}
-
-/* Confetti Celebration */
-.confetti {
-    position: absolute;
-    font-size: 24px;
-    animation: floatConfetti 1s ease-in-out infinite;
-}
-
-@keyframes floatConfetti {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-}
-#noBtn {
-    transition: left 0.3s ease-out, top 0.3s ease-out;
+    font-size: 20px;
 }
