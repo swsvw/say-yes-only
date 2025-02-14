@@ -1,34 +1,60 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: red;
+    margin: 0;
+    padding: 0;
+    transition: background 0.5s ease-in-out;
+}
+
+/* Start Screen */
+#start-screen {
+    background: red;
     color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-    margin-top: 100px;
-}
-
-button {
-    font-size: 20px;
+#yes-btn, #no-btn {
+    font-size: 18px;
     padding: 10px 20px;
     margin: 10px;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
+    position: relative;
 }
 
 #yes-btn {
-    background-color: green;
+    background: green;
     color: white;
 }
 
 #no-btn {
-    background-color: black;
-    color: white;
-    position: absolute;
+    background: white;
+    color: red;
 }
 
-.message {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 20px;
+/* Hide the flower page initially */
+#flower-page {
+    display: none;
+    padding: 20px;
+    background: white;
+}
+
+/* Flowers Styling */
+.flower-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.flower-container img {
+    width: 200px; /* Proportionate size */
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
 }
