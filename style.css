@@ -1,93 +1,47 @@
-/* General Styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ff4d4d;
-    text-align: center;
-    color: white;
-    height: 100vh;
+    background: #ff6666;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Center Container */
-.container {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    border-radius: 15px;
-}
-
-/* Main Heading */
-h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-/* Buttons */
-button {
-    font-size: 20px;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
-}
-
-#yesBtn {
-    background-color: green;
-    color: white;
-}
-
-#noBtn {
-    background-color: black;
-    color: white;
-    position: relative;
-}
-
-/* Floating Hearts */
-.hearts-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    margin: 0;
 }
 
 .heart {
     position: absolute;
-    font-size: 30px;
-    animation: floatUp 5s linear infinite;
+    bottom: -30px; /* Start below the screen */
+    animation: floatUp 6s ease-in-out infinite;
 }
 
-/* Heart Floating Animation */
 @keyframes floatUp {
     from {
-        transform: translateY(100vh);
+        transform: translateY(0);
         opacity: 1;
     }
     to {
-        transform: translateY(-10vh);
+        transform: translateY(-100vh); /* Move up fully */
         opacity: 0;
     }
 }
 
-/* Celebration Animation */
 .celebration {
     position: absolute;
-    font-size: 40px;
-    animation: burst 1s ease-out;
+    font-size: 30px;
+    animation: pop 0.8s ease-out;
 }
 
-@keyframes burst {
+@keyframes pop {
     from {
-        transform: scale(0);
-        opacity: 1;
+        transform: scale(0.5);
+        opacity: 0.5;
     }
     to {
-        transform: scale(2);
-        opacity: 0;
+        transform: scale(1.5);
+        opacity: 1;
     }
+}
+
+#yesBtn {
+    transition: transform 0.2s ease-in-out;
+}
+
+#yesBtn:active {
+    transform: scale(1.1);
 }
