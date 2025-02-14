@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Floating hearts and flowers
-    function createFloatingElements(speedMultiplier = 10) {
-        const icons = ["❤️", "🌸", "💐", "🌺", "😍", "💖"];
+    function createFloatingElements(speedMultiplier = 3) {
+        const icons = ["❤️", "🌸", "🌺", "😍", "💖", "🌹", "🌷"];
         for (let i = 0; i < 15 * speedMultiplier; i++) {
             let element = document.createElement("div");
             element.innerText = icons[Math.floor(Math.random() * icons.length)];
