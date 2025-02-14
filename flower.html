@@ -3,82 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pick Flowers</title>
-    <style>
-        body {
-            background-color: #ffe6eb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            text-align: center;
-            background: rgba(255, 192, 203, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .options {
-            margin: 20px 0;
-        }
-        .options label {
-            display: block;
-            font-size: 20px;
-            margin: 10px 0;
-            cursor: pointer;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            font-size: 20px;
-            background-color: #ff4d79;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background-color: #ff1a5c;
-        }
-    </style>
+    <title>Choose Your Flower</title>
+    <link rel="stylesheet" href="flower-style.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>Pick your favorite flowers 🌷</h1>
-        <form id="flowerForm">
-            <div class="options">
-                <label><input type="checkbox" name="flower" value="Roses"> Roses</label>
-                <label><input type="checkbox" name="flower" value="Single Flower"> Single Flower</label>
-                <label><input type="checkbox" name="flower" value="Daffodils"> Daffodils</label>
-            </div>
-            <button type="button" class="btn" onclick="confirmSelection()">Confirm</button>
-        </form>
+        <h1>Pick the flowers you like! 🌸💐🌺</h1>
+        <div class="flower-container">
+            <img src="https://cdn.bloomsflora.com/uploads/product/flowers_n_fruits/1632393015_115.jpg" alt="Bouquet" class="flower" onclick="selectFlower(this)">
+            <img src="https://www.juneflowers.com/wp-content/uploads/2022/08/03b.png" alt="Single Flower" class="flower" onclick="selectFlower(this)">
+            <img src="https://www.thefloralmart.com/wp-content/uploads/2020/06/TFMVD008-A.main_.jpg" alt="Roses" class="flower" onclick="selectFlower(this)">
+            <img src="https://images.unsplash.com/photo-1488928741225-2aaf732c96cc?fm=jpg&q=60&w=3000" alt="Tulips" class="flower" onclick="selectFlower(this)">
+            <img src="https://hub.suttons.co.uk/wp-content/uploads/2022/07/20220729_suttons_narcissus_sunshine_mix.jpg" alt="Daffodils" class="flower" onclick="selectFlower(this)">
+        </div>
+        <button id="confirmSelection">Confirm</button>
+        <p id="chosenFlower"></p>
     </div>
 
-    <script>
-        function confirmSelection() {
-            let selectedFlowers = [];
-            let checkboxes = document.querySelectorAll('input[name="flower"]:checked');
-            checkboxes.forEach((checkbox) => {
-                selectedFlowers.push(checkbox.value);
-            });
-
-            if (selectedFlowers.length === 0) {
-                alert("Please select at least one flower!");
-                return;
-            }
-
-            let selectedString = selectedFlowers.join(", ");
-            localStorage.setItem("selectedFlowers", selectedString);
-            window.location.href = "final-message.html";
-        }
-    </script>
-
+    <script src="flower-script.js"></script>
 </body>
 </html>
