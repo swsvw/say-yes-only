@@ -54,10 +54,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => celebration.remove(), 1000);
             }
 
-            // **Ensure Redirect Works After 2 Seconds**
+            // **Try Redirecting**
             setTimeout(() => {
                 console.log("Redirecting to flower.html...");
+
+                // Try normal redirect
                 window.location.href = "flower.html";
+
+                // Backup: Force reload in case normal redirect fails
+                setTimeout(() => {
+                    window.location.assign("flower.html");
+                }, 3000);
             }, 2000);
         });
     }
