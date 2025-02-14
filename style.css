@@ -1,91 +1,4 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ff4d4d;
-    text-align: center;
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 0;
-    overflow: hidden;
-    position: relative;
-}
-
-.container {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    border-radius: 15px;
-}
-
-h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-button {
-    font-size: 20px;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
-    transition: 0.3s;
-}
-
-#yesBtn {
-    background-color: rgb(128, 0, 55);
-    color: white;
-}
-
-#noBtn {
-    background-color: black;
-    color: white;
-    position: absolute;
-}
-
-/* Floating hearts & flowers */
-.floating {
-    position: absolute;
-    font-size: 20px;
-    opacity: 0.8;
-    animation: float 5s linear infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(-10vh) translateX(calc(-50px + 100px * random()));
-        opacity: 0;
-    }
-}
-
-/* Confetti Animation */
-.confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background: var(--color);
-    opacity: 0.8;
-    border-radius: 50%;
-    animation: confetti-fall 2s linear forwards;
-}
-
-@keyframes confetti-fall {
-    0% {
-        transform: translateY(-10vh) translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) translateX(calc(-50px + 100px * random()));
-        opacity: 0;
-    }
-}
-body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #fffaf0;
@@ -96,11 +9,17 @@ body {
     margin-top: 50px;
 }
 
+h1 {
+    font-size: 24px;
+    color: #d63384;
+}
+
 .flower-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+    margin-top: 20px;
 }
 
 .flower {
@@ -108,12 +27,14 @@ body {
     height: auto;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
 }
 
 .flower:hover {
     transform: scale(1.2);
 }
 
+/* Floating hearts & flowers */
 #floatingContainer {
     position: fixed;
     top: 0;
@@ -122,6 +43,7 @@ body {
     height: 100%;
     pointer-events: none;
 }
+
 .floating {
     position: absolute;
     font-size: 24px;
