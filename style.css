@@ -2,46 +2,22 @@ body {
     background: #ff6666;
     overflow: hidden;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
 }
 
-.heart {
-    position: absolute;
-    bottom: -30px; /* Start below the screen */
-    animation: floatUp 6s ease-in-out infinite;
+h1 {
+    font-size: 36px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-@keyframes floatUp {
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-100vh); /* Move up fully */
-        opacity: 0;
-    }
-}
-
-.celebration {
-    position: absolute;
-    font-size: 30px;
-    animation: pop 0.8s ease-out;
-}
-
-@keyframes pop {
-    from {
-        transform: scale(0.5);
-        opacity: 0.5;
-    }
-    to {
-        transform: scale(1.5);
-        opacity: 1;
-    }
-}
-
-#yesBtn {
-    transition: transform 0.2s ease-in-out;
-}
-
-#yesBtn:active {
-    transform: scale(1.1);
+.buttons {
+    display: flex;
+    gap: 15px;
 }
