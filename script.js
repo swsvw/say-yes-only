@@ -1,22 +1,46 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const startScreen = document.getElementById("start-screen");
-    const flowerPage = document.getElementById("flower-page");
-    const yesBtn = document.getElementById("yes-btn");
-    const noBtn = document.getElementById("no-btn");
+document.addEventListener("DOMContentLoaded", function () {
+    let noBtn = document.getElementById("noBtn");
+    let yesBtn = document.getElementById("yesBtn");
 
-    // Make the "No" button run away
-    noBtn.addEventListener("mouseover", function() {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
-        noBtn.style.position = "absolute";
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
-    });
+    if (noBtn) {
+        noBtn.addEventListener("mouseover", function () {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = "absolute";
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+    }
 
-    // When "Yes" is clicked, show the next page
-    yesBtn.addEventListener("click", function() {
-        startScreen.style.display = "none"; // Hide first screen
-        flowerPage.style.display = "block"; // Show flowers
-        document.body.style.background = "white"; // Change background
-    });
+    if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+            yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+            setTimeout(() => {
+                window.location.href = "flower.html";
+            }, 2000);
+        });
+    }
+
+    let flowers = document.querySelectorAll(".flower");
+    let selectedFlowers = [];
+
+    if (flowers.length > 0) {
+        flowers.forEach(flower => {
+            flower.addEventListener("click", function () {
+                if (selectedFlowers.includes(flower)) {
+                    flower.classList.remove("selected");
+                    selectedFlowers = selectedFlowers.filter(f => f !== flower);
+                } else {
+                    flower.classList.add("selected");
+                    selectedFlowers.push(flower);
+                }
+            });
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && selectedFlowers.length > 0) {
+                alert("Thank you d. would love to see you soon. xoxo 💕");
+            }
+        });
+    }
 });
