@@ -135,15 +135,22 @@ button {
         opacity: 0;
     }
 }
+body {
+    background-color: #ffe6eb; /* Light pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
 .message-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 192, 203, 0.7); /* Light pink with transparency */
+    background: rgba(255, 192, 203, 0.7); /* Translucent pink box */
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
+    max-width: 80%;
 }
+
