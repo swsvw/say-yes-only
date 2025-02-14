@@ -1,10 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
     let noBtn = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
-    let floatingContainer = document.createElement("div");
-    floatingContainer.classList.add("floating-container");
-    document.body.appendChild(floatingContainer);
+    let floatingContainer = document.getElementById("floatingContainer");
 
+    // Floating hearts and flowers generator
+    function createFloatingElement() {
+        const emojiArray = ["❤️", "🌸", "💐", "🌺", "💖", "🌹"];
+        const element = document.createElement("div");
+        element.classList.add("floating");
+        element.innerText = emojiArray[Math.floor(Math.random() * emojiArray.length)];
+        element.style.left = Math.random() * 100 + "vw";
+        element.style.top = "100vh";
+        element.style.animationDuration = Math.random() * 3 + 2 + "s";
+        element.style.fontSize = Math.random() * 10 + 20 + "px";
+        floatingContainer.appendChild(element);
+
+        setTimeout(() => {
+            element.remove();
+        }, 5000);
+    }
+
+    setInterval(createFloatingElement, 500); // Create floating elements every 500ms
+
+    // No button moves away
     if (noBtn) {
         noBtn.addEventListener("mouseover", function () {
             let x = Math.random() * (window.innerWidth - 100);
@@ -15,53 +33,37 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Confetti Animation Function
+    function createConfetti() {
+        for (let i = 0; i < 50; i++) {
+            let confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.setProperty("--color", getRandomColor());
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.top = Math.random() * -10 + "vh";
+            confetti.style.animationDuration = Math.random() * 2 + 1 + "s";
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 2000);
+        }
+    }
+
+    function getRandomColor() {
+        const colors = ["#FFD700", "#FF69B4", "#00FF7F", "#FF4500", "#1E90FF"];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // Yes button action
     if (yesBtn) {
         yesBtn.addEventListener("click", function () {
             yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
+            createConfetti();
+
             setTimeout(() => {
                 window.location.href = "flower.html";
-            }, 2000);
+            }, 3000);
         });
     }
-
-    let flowers = document.querySelectorAll(".flower");
-    let selectedFlowers = [];
-
-    if (flowers.length > 0) {
-        flowers.forEach(flower => {
-            flower.addEventListener("click", function () {
-                if (selectedFlowers.includes(flower)) {
-                    flower.classList.remove("selected");
-                    selectedFlowers = selectedFlowers.filter(f => f !== flower);
-                } else {
-                    flower.classList.add("selected");
-                    selectedFlowers.push(flower);
-                }
-            });
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Enter" && selectedFlowers.length > 0) {
-                document.body.innerHTML = `
-                    <div class="container">
-                        <h1>Thank you d. would love to see you soon. xoxo 💕</h1>
-                    </div>
-                `;
-            }
-        });
-    }
-
-    function createFloatingElement() {
-        let element = document.createElement("div");
-        element.classList.add("floating-element");
-        element.innerHTML = ["❤️", "💖", "🌹", "💗", "💘", "🌸", "🌷", "💐"][Math.floor(Math.random() * 8)];
-        element.style.left = `${Math.random() * 100}vw`;
-        element.style.animationDuration = `${4 + Math.random() * 3}s`;
-        floatingContainer.appendChild(element);
-
-        setTimeout(() => element.remove(), 6000);
-    }
-
-    // Start Floating Elements Every 250ms
-    setInterval(createFloatingElement, 250);
 });

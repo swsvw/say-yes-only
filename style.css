@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     margin: 0;
     overflow: hidden;
+    position: relative;
 }
 
 .container {
@@ -30,6 +31,7 @@ button {
     border-radius: 10px;
     cursor: pointer;
     border: none;
+    transition: 0.3s;
 }
 
 #yesBtn {
@@ -43,25 +45,44 @@ button {
     position: relative;
 }
 
-/* Floating Hearts & Flowers */
-.floating-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.floating-element {
+/* Floating hearts and flowers animation */
+.floating {
     position: absolute;
-    font-size: 30px;
-    animation: floatUp 6s linear infinite;
+    width: 30px;
+    height: 30px;
     opacity: 0.8;
+    animation: float 5s linear infinite;
 }
 
-@keyframes floatUp {
-    0% { transform: translateY(100vh) scale(0.7); opacity: 1; }
-    100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(calc(-50px + 100px * random()));
+        opacity: 0;
+    }
+}
+
+/* Confetti Animation */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: var(--color);
+    opacity: 0.8;
+    border-radius: 50%;
+    animation: confetti-fall 2s linear forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-10vh) translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(calc(-50px + 100px * random()));
+        opacity: 0;
+    }
 }
