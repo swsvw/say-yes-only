@@ -1,60 +1,54 @@
-body {
+/* Start Page */
+body#mainScreen {
+    background-color: red;
+    color: white;
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 0;
-    padding: 0;
-    transition: background 0.5s ease-in-out;
+    padding-top: 20%;
 }
 
-/* Start Screen */
-#start-screen {
-    background: red;
-    color: white;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#yes-btn, #no-btn {
-    font-size: 18px;
+button {
+    font-size: 20px;
     padding: 10px 20px;
     margin: 10px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-    position: relative;
 }
 
-#yes-btn {
-    background: green;
+#yesButton {
+    background-color: green;
     color: white;
 }
 
-#no-btn {
-    background: white;
-    color: red;
+#noButton {
+    background-color: black;
+    color: white;
+    position: absolute;
 }
 
-/* Hide the flower page initially */
-#flower-page {
-    display: none;
-    padding: 20px;
-    background: white;
+/* Flower Page */
+body#flowerScreen {
+    background-color: pink;
+    text-align: center;
+    font-family: Arial, sans-serif;
 }
 
-/* Flowers Styling */
 .flower-container {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
+    margin-top: 50px;
 }
 
-.flower-container img {
-    width: 200px; /* Proportionate size */
-    height: auto;
-    object-fit: contain;
+.flower {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
     border-radius: 10px;
+    transition: 0.3s;
+}
+
+.selected {
+    border: 3px solid black;
+    transform: scale(1.1);
 }
