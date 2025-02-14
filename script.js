@@ -2,40 +2,61 @@ document.addEventListener("DOMContentLoaded", function () {
     let noBtn = document.getElementById("noBtn");
     let yesBtn = document.getElementById("yesBtn");
     let heartsContainer = document.querySelector(".hearts-container");
-    let finalMessage = document.getElementById("finalMessage"); // Final message container
+    let finalMessage = document.getElementById("finalMessage");
 
-    // 💖 Create Floating Hearts (3x More, Goes to Top)
+    // Create Floating Hearts & Flowers (2x more)
     function createFloatingHeart() {
-        for (let i = 0; i < 30; i++) { // Increased to 3x more
+        for (let i = 0; i < 10; i++) {
             let heart = document.createElement("div");
             heart.classList.add("heart");
             heart.innerHTML = ["❤️", "💖", "🌹", "💗", "💘"][Math.floor(Math.random() * 5)];
             heart.style.left = `${Math.random() * 100}vw`;
-            heart.style.animationDuration = `${2 + Math.random() * 2}s`; // Faster floating
+            heart.style.animationDuration = `${3 + Math.random() * 3}s`;
             heartsContainer.appendChild(heart);
 
-            setTimeout(() => heart.remove(), 5000);
+            setTimeout(() => heart.remove(), 6000);
         }
     }
-    setInterval(createFloatingHeart, 300);
+    setInterval(createFloatingHeart, 500);
 
-    // 😈 "No" Button Moves Away Smoothly
+    // No Button Moves Away (Stays on Screen & Moves Dynamically)
     if (noBtn) {
-        noBtn.addEventListener("mouseover", function () {
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 50);
-            noBtn.style.position = "absolute";
-            noBtn.style.transition = "0.3s ease-in-out"; // Smooth movement
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
+        noBtn.style.position = "absolute"; // Ensure position is absolute
+
+        noBtn.addEventListener("mouseenter", function (event) {
+            moveButtonAway(event, noBtn);
         });
+
+        function moveButtonAway(event, button) {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const buttonWidth = button.clientWidth;
+            const buttonHeight = button.clientHeight;
+
+            // Get current position
+            let rect = button.getBoundingClientRect();
+            let currentX = rect.left;
+            let currentY = rect.top;
+
+            // Calculate new position relative to cursor
+            let newX = currentX + (Math.random() * 200 - 100);
+            let newY = currentY + (Math.random() * 200 - 100);
+
+            // Ensure the button stays inside the screen
+            newX = Math.max(10, Math.min(newX, screenWidth - buttonWidth - 10));
+            newY = Math.max(10, Math.min(newY, screenHeight - buttonHeight - 10));
+
+            // Apply new position with smooth transition
+            button.style.transition = "left 0.3s ease-out, top 0.3s ease-out";
+            button.style.left = `${newX}px`;
+            button.style.top = `${newY}px`;
+        }
     }
 
-    // 🎉 "Yes" Button Celebration Effect
+    // Yes Button Celebration Effect (4x More Celebration)
     if (yesBtn) {
         yesBtn.addEventListener("click", function () {
             yesBtn.innerText = "YAYY HAHAHA U MADE MY DAY!! 😙🥰😍😳";
-            yesBtn.style.backgroundColor = "#ff4081";
 
             // Speed Up Hearts
             document.querySelectorAll(".heart").forEach(heart => {
@@ -60,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✨ Show Final Message in Translucent Box
+    // Show Final Message in Translucent Box
     function showFinalMessage() {
         finalMessage.style.display = "flex"; // Show the message
         finalMessage.classList.add("vibrant-effect");
@@ -70,13 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
             let confetti = document.createElement("div");
             confetti.classList.add("confetti");
             confetti.innerText = ["✨", "🎊", "🎈", "💖", "💘"][Math.floor(Math.random() * 5)];
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.top = `${Math.random() * 100}vh`;
             document.body.appendChild(confetti);
-
-            // Randomize confetti position
-            let x = Math.random() * window.innerWidth;
-            let y = Math.random() * window.innerHeight;
-            confetti.style.left = `${x}px`;
-            confetti.style.top = `${y}px`;
 
             setTimeout(() => confetti.remove(), 1500);
         }

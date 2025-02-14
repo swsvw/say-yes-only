@@ -204,3 +204,6 @@ button {
         box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
     }
 }
+#noBtn {
+    transition: left 0.3s ease-out, top 0.3s ease-out;
+}
